@@ -1,0 +1,18 @@
+.footer {
+  height: 26px;
+  background: #100f0f;
+  margin-top: auto;
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 13px;
+}
+
+.footer p {
+  color: #fff;
+  font-size: 13px;
+}
