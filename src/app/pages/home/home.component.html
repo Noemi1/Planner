@@ -1,6 +1,6 @@
 <div class="editable">
   <div class="row">
-    <div class="col-lg-5 col-md-5 col-sm-12 col-12">
+    <div class="col-lg-5 col-md-5 col-sm-12 col-12 pr-2">
       <div class="container bg-white border p-2">
         <div class="form-row">
           <div class="form-group col-lg-9 col-md-9 col-sm-9 col-9">
@@ -139,25 +139,25 @@
           <tr *ngFor="let item of values">
             <th class="px-3 font-weight-bold text-right">{{item.tipo}}</th>
             <td>
-              <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo="ngModel" [(ngModel)]="item.baixissimo">
+              <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo="ngModel" [ngModel]="item.baixissimo | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.baixissimo = baixissimo.value">
             </td>
             <td>
-              <input type="text" class="form-control" id="baixo" name="baixo" #baixo="ngModel" [(ngModel)]="item.baixo">
+              <input type="text" class="form-control" id="baixo" name="baixo" #baixo="ngModel" [ngModel]="item.baixo | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.baixo = baixo.value">
             </td>
             <td>
-              <input type="text" class="form-control" id="moderado" name="moderado" #moderado="ngModel" [(ngModel)]="item.moderado">
+              <input type="text" class="form-control" id="moderado" name="moderado" #moderado="ngModel" [ngModel]="item.moderado | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.moderado = moderado.value">
             </td>
             <td>
-              <input type="text" class="form-control" id="arrojado" name="arrojado" #arrojado="ngModel" [(ngModel)]="item.arrojado">
+              <input type="text" class="form-control" id="arrojado" name="arrojado" #arrojado="ngModel" [ngModel]="item.arrojado | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.arrojado = arrojado.value">
             </td>
             <td>
-              <input type="text" class="form-control" id="superArrojado" name="superArrojado" #superArrojado="ngModel" [(ngModel)]="item.superArrojado">
+              <input type="text" class="form-control" id="superArrojado" name="superArrojado" #superArrojado="ngModel" [ngModel]="item.superArrojado | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.superArrojado = superArrojado.value">
             </td>
             <td>
-              <input type="text" class="form-control" id="hedge" name="hedge" #hedge="ngModel" [(ngModel)]="item.hedge">
+              <input type="text" class="form-control" id="hedge" name="hedge" #hedge="ngModel" [ngModel]="item.hedge | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.hedge = hedge.value">
             </td>
             <td>
-              <input type="text" class="form-control" id="total" name="total" #total="ngModel" [(ngModel)]="item.total">
+              <input type="text" class="form-control" id="total" name="total" #total="ngModel" [ngModel]="item.total | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.total = total.value">
             </td>
             <td></td>
           </tr>
