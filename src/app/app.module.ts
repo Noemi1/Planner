@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
-
+import { FieldsetModule } from 'primeng/fieldset';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +28,7 @@ import { TableModule } from 'primeng/table';
     FontAwesomeModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FieldsetModule,
     FormsModule,
     ToastrModule.forRoot(
       {

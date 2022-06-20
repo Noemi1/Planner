@@ -1,0 +1,60 @@
+.form-container {
+  background-color: #fbfbfb;
+  position: relative;
+  border: 1px #cdcdcd solid;
+  margin-bottom: 15px;
+}
+
+.form-container-title {
+  transform: translateY(-40%);
+  background: #fbfbfb;
+  display: inline-block;
+  padding: 2px 8px;
+  border: 1px #cdcdcd solid;
+}
+
+.form-container-body {
+  display: flex;
+  margin: 0 8px;
+  flex-wrap: wrap;
+}
+
+.form-container-body .form-group {
+  padding: 0 15px 0 0;
+}
+
+.table-editable td {
+  padding: 0;
+  vertical-align: middle;
+}
+
+.table-editable td .form-control {
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.table-editable td .form-control:focus {
+  box-shadow: 0px 36px 1px 1px rgb(234 242 245) inset;
+}
+
+.table-editable th {
+  padding: 7px 9px;
+  border: none;
+  background: #3c86a0;
+  color: #fff;
+  text-shadow: 1px 2px 4px #00000099;
+  vertical-align: middle;
+}
+
+
+.btn-clear-table {
+  color: #fff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 0;
+  font-weight: bold;
+  background: #ffffff17;
+}
