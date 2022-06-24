@@ -1,168 +1,583 @@
-<div class="editable">
-  <div class="row">
-    <div class="col-lg-5 col-md-5 col-sm-12 col-12 pr-2">
-      <div class="container bg-white border p-2">
-        <div class="form-row">
-          <div class="form-group col-lg-9 col-md-9 col-sm-9 col-9">
-            <label for="nome">Nome Completo:</label>
-            <input type="text" class="form-control" id="nome" name="nome" #nome>
-          </div>
-          <div class="form-group col-lg-3 col-md-3 col-sm-3 col-3">
-            <label for="idade">Idade:</label>
-            <input type="text" id="idade" name="idade" class="form-control">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6">
-            <label for="receitas">Receitas:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">R$</div>
+<div class="home editable">
+  <div class="d-flex">
+    <div class="col-lg-9 col-md-9 col-sm-12 col-12 px-1">
+      <div class="d-flex align-items-stretch">
+        <div class="col-lg-5 col-md-5 col-sm-12 col-12 px-lg-1 px-md-0 px-sm-0">
+          <div class="bg-white border p-2">
+            <div class="form-row">
+              <div class="form-group col-lg-9 col-md-9 col-sm-9 col-9">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" class="form-control" id="nome" name="nome" #nome>
               </div>
-              <input type="text" class="form-control" id="receitas" name="receitas" placeholder="00,00">
+              <div class="form-group col-lg-3 col-md-3 col-sm-3 col-3">
+                <label for="idade">Idade:</label>
+                <input type="text" id="idade" name="idade" class="form-control">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6">
+                <label for="receitas">Receitas:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">R$</div>
+                  </div>
+                  <input type="text" class="form-control" id="receitas" name="receitas" placeholder="00,00">
+                </div>
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6">
+                <label for="despesas">Despesas:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">R$</div>
+                  </div>
+                  <input type="text" class="form-control" id="despesas" name="despesas" placeholder="00,00">
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-lg6 col-md-6 col-sm-12 col-12">
+                <label for="">Selic/DI</label>
+                <input type="text" class="form-control" placeholder="00,00">
+              </div>
+              <div class="form-group col-lg6 col-md-6 col-sm-12 col-12">
+                <label for="">IPCA Médio</label>
+                <input type="text" class="form-control" placeholder="00,00">
+              </div>
             </div>
           </div>
-          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6">
-            <label for="despesas">Despesas:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">R$</div>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-12 col-12 px-lg-1 px-md-0 px-sm-0">
+          <div class="bg-white border p-2">
+            <div class="form-row">
+              <div class="form-group col-lg-7 col-md-6 col-sm-4 col-8">
+                <label for="">Perfil de Investidor:</label>
+                <select name="" id="" class=" form-control">
+                </select>
               </div>
-              <input type="text" class="form-control" id="despesas" name="despesas" placeholder="00,00">
+              <div class="form-group col-lg-5 col-md-5 col-sm-4 col-4">
+                <label for="">Capacidade de Risco:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">R$</div>
+                  </div>
+                  <input type="text" class="form-control" id="" name="" placeholder="00,00">
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="form-row">
+              <div class=" col-lg-6 col-md-6 col-sm-12 col-12 px-0">
+                <div class="form-container">
+                  <div class="form-container-title font-weight-bold">Reserva de Emergência</div>
+                  <div class="form-container-body">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6 pr-1">
+                      <label for=""> Sugerida:</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">R$</div>
+                        </div>
+                        <input type="text" class="form-control" id="" name="" placeholder="00,00">
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6 pr-0">
+                      <label for=""> Planejada:</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">R$</div>
+                        </div>
+                        <input type="text" class="form-control" id="" name="" placeholder="00,00">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-12 pl-1">
+                <div class="form-container">
+                  <div class="form-container-title font-weight-bold">Risco</div>
+                  <div class="form-container-body">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6 pr-1">
+                      <label for=""> Assumido:</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">R$</div>
+                        </div>
+                        <input type="text" class="form-control" id="" name="" placeholder="00,00">
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6 pr-0">
+                      <label for=""> Tolerado:</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">%</div>
+                        </div>
+                        <input type="text" class="form-control" id="" name="" placeholder="00,00">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group col-lg6 col-md-6 col-sm-12 col-12">
-            <label for="">Selic/DI</label>
-            <input type="text" class="form-control" placeholder="00,00">
+      </div>
+      <div class="d-flex align-items-stretch">
+        <div class="form-container bg-white border mt-3 col-lg-12">
+          <div class="form-container-title">
+            <p class="font-weight-bold">Cálculos</p>
           </div>
-          <div class="form-group col-lg6 col-md-6 col-sm-12 col-12">
-            <label for="">IPCA Médio</label>
-            <input type="text" class="form-control" placeholder="00,00">
+          <div class="form-container-baixo">
+            <table class="table table-editable">
+              <thead>
+                <tr>
+                  <th>
+                    <button class="btn btn-clear-table">Limpar</button>
+                  </th>
+                  <th>Baixíssimo</th>
+                  <th>Baixo</th>
+                  <th>Moderado</th>
+                  <th>Arrojado</th>
+                  <th style="white-space: nowrap;">Super Arrojado</th>
+                  <th>Hedge</th>
+                  <th>Total</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of calculos">
+                  <th class="px-3 font-weight-bold text-right">{{item.tipo}}</th>
+                  <td>
+                    <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo="ngModel" [ngModel]="item.baixissimo | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.baixissimo = baixissimo.value">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="baixo" name="baixo" #baixo="ngModel" [ngModel]="item.baixo | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.baixo = baixo.value">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="moderado" name="moderado" #moderado="ngModel" [ngModel]="item.moderado | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.moderado = moderado.value">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="arrojado" name="arrojado" #arrojado="ngModel" [ngModel]="item.arrojado | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.arrojado = arrojado.value">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="superArrojado" name="superArrojado" #superArrojado="ngModel" [ngModel]="item.superArrojado | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.superArrojado = superArrojado.value">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="hedge" name="hedge" #hedge="ngModel" [ngModel]="item.hedge | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.hedge = hedge.value">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="total" name="total" #total="ngModel" [ngModel]="item.total | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.total = total.value">
+                  </td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex align-items-stretch">
+        <div class="form-container bg-white border mt-3 col-lg-12">
+          <div class="form-container-title">
+            <p class="font-weight-bold">Investimentos</p>
+          </div>
+          <div class="form-container-baixo">
+            <table class="table table-editable table-responsive">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th style="white-space: nowrap;">Rentabilidade</th>
+                  <th style="white-space: nowrap;">Tributação</th>
+                  <th style="white-space: nowrap;">Rentab. Liquida</th>
+                  <th style="white-space: nowrap;">Montante Atual</th>
+                  <th style="white-space: nowrap;">Montante Sugerida</th>
+                  <th style="white-space: nowrap;">Plano de Ação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of investimento">
+                  <th class="px-3 font-weight-bold text-right" style="white-space: nowrap;">{{item.tipo}}</th>
+                  <td>
+                    <input type="text" class="form-control" id="rentabilidade" name="rentabilidade" #rentabilidade>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="tributacao" name="tributacao" #tributacao>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="rentabilidadeLiquida" name="rentabilidadeLiquida" #rentabilidadeLiquida>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="montanteAtual" name="montanteAtual" #montanteAtual>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="montanteSugerida" name="montanteSugerida" #montanteSugerida>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="planoAcao" name="planoAcao" #planoAcao>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-7 col-md-7 col-sm-12 col-12">
-      <div class="container bg-white border p-2">
-        <div class="form-row">
-          <div class="form-group col-lg-7 col-md-6 col-sm-4 col-8">
-            <label for="">Perfil de Investidor:</label>
-            <select name="" id="" class=" form-control">
-            </select>
-          </div>
-          <div class="form-group col-lg-5 col-md-5 col-sm-4 col-4">
-            <label for="">Capacidade de Risco:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">R$</div>
-              </div>
-              <input type="text" class="form-control" id="" name="" placeholder="00,00">
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="form-row">
-          <div class="form-container col-lg-6 col-md-6 col-sm-12 col-12">
-            <div class="form-container-title font-weight-bold">Reserva de Emergência</div>
-            <div class="form-container-body">
-              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6">
-                <label for=""> Sugerida:</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">R$</div>
-                  </div>
-                  <input type="text" class="form-control" id="" name="" placeholder="00,00">
-                </div>
-              </div>
-              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6">
-                <label for=""> Planejada:</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">R$</div>
-                  </div>
-                  <input type="text" class="form-control" id="" name="" placeholder="00,00">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="form-container col-lg-6 col-md-6 col-sm-12 col-12">
-            <div class="form-container-title font-weight-bold">Risco</div>
-            <div class="form-container-body">
-              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6">
-                <label for=""> Assumido:</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">R$</div>
-                  </div>
-                  <input type="text" class="form-control" id="" name="" placeholder="00,00">
-                </div>
-              </div>
-              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6">
-                <label for=""> Tolerado:</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">%</div>
-                  </div>
-                  <input type="text" class="form-control" id="" name="" placeholder="00,00">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-12 px-1">
+      <div class="bg-white border p-2">
+        <table class="table table-editable">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Aposentadoria</th>
+              <th>Variação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="px-3 font-weight-bold text-right">Idade</td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+            </tr>
+            <tr>
+              <td class="px-3 font-weight-bold text-right" style="white-space: nowrap;">Renda Mensal</td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+            </tr>
+            <tr>
+              <td class="px-3 font-weight-bold text-right">Rentabilidade</td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-  </div>
-  <div class="form-container bg-white border mt-3 col-lg-12 col-md-12 col-sm-12 col-12">
-    <div class="form-container-title">
-      <p class="font-weight-bold">Cálculos</p>
-    </div>
-    <div class="form-container-baixo">
-      <table class="table table-editable">
-        <thead>
-          <tr>
-            <th>
-              <button class="btn btn-clear-table">Limpar</button>
-            </th>
-            <th>Baixíssimo</th>
-            <th>Baixo</th>
-            <th>Moderado</th>
-            <th>Arrojado</th>
-            <th>Super Arrojado</th>
-            <th>Hedge</th>
-            <th>Total</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of values">
-            <th class="px-3 font-weight-bold text-right">{{item.tipo}}</th>
-            <td>
-              <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo="ngModel" [ngModel]="item.baixissimo | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.baixissimo = baixissimo.value">
-            </td>
-            <td>
-              <input type="text" class="form-control" id="baixo" name="baixo" #baixo="ngModel" [ngModel]="item.baixo | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.baixo = baixo.value">
-            </td>
-            <td>
-              <input type="text" class="form-control" id="moderado" name="moderado" #moderado="ngModel" [ngModel]="item.moderado | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.moderado = moderado.value">
-            </td>
-            <td>
-              <input type="text" class="form-control" id="arrojado" name="arrojado" #arrojado="ngModel" [ngModel]="item.arrojado | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.arrojado = arrojado.value">
-            </td>
-            <td>
-              <input type="text" class="form-control" id="superArrojado" name="superArrojado" #superArrojado="ngModel" [ngModel]="item.superArrojado | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.superArrojado = superArrojado.value">
-            </td>
-            <td>
-              <input type="text" class="form-control" id="hedge" name="hedge" #hedge="ngModel" [ngModel]="item.hedge | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.hedge = hedge.value">
-            </td>
-            <td>
-              <input type="text" class="form-control" id="total" name="total" #total="ngModel" [ngModel]="item.total | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.total = total.value">
-            </td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="bg-white border p-2">
+        <table class="table table-editable">
+          <thead>
+            <tr>
+              <th></th>
+              <th>
+                <p class="font-weight-bold text-center d-flex align-items-center">
+                  Principais objetivos
+                  <button class="btn p-0 ml-auto text-white">+</button>
+                </p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="d-block w-100 p-2 bg-light text-center">1</span>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="d-block w-100 p-2 bg-light text-center">2</span>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="d-block w-100 p-2 bg-light text-center">3</span>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bg-white border p-2">
+        <table class="table table-editable">
+          <thead>
+            <tr>
+              <th></th>
+              <th colspan="2">
+                <p class="font-weight-bold text-center d-flex align-items-center">
+                  Fluxos Pontuais
+                  <button class="btn p-0 ml-auto text-white">+</button>
+                </p>
+              </th>
+            </tr>
+            <tr class="subheader">
+              <th></th>
+              <th>Idade</th>
+              <th>Montante</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="d-block w-100 p-2 bg-light text-center">1</span>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="d-block w-100 p-2 bg-light text-center">2</span>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="d-block w-100 p-2 bg-light text-center">3</span>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="d-block w-100 p-2 bg-light text-center">4</span>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="d-block w-100 p-2 bg-light text-center">5</span>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="d-block w-100 p-2 bg-light text-center">6</span>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="d-block w-100 p-2 bg-light text-center">7</span>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="d-block w-100 p-2 bg-light text-center">8</span>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+              <td>
+                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bg-white border p-2">
+        <table class="table table-editable">
+          <thead>
+            <tr>
+              <th colspan="3">
+                <p class="font-weight-bold text-center">
+                  Ativos
+                </p>
+              </th>
+            </tr>
+            <tr class="subheader">
+              <th class="text-right">Descrição</th>
+              <th>Valor <small>(R$)</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Imóveis</th>
+              <td>
+                <input type="text" class="form-control" id="imoveis" name="imoveis" #imoveis="ngModel" [(ngModel)]="ativos.imoveis">
+              </td>
+            </tr>
+            <tr>
+              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Veículos</th>
+              <td>
+                <input type="text" class="form-control" id="veiculos" name="veiculos" #veiculos="ngModel" [(ngModel)]="ativos.veiculos">
+              </td>
+            </tr>
+            <tr>
+              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Outros Bens</th>
+              <td>
+                <input type="text" class="form-control" id="outrosBens" name="outrosBens" #outrosBens="ngModel" [(ngModel)]="ativos.outrosBens">
+              </td>
+            </tr>
+            <tr>
+              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Investimentos</th>
+              <td>
+                <input type="text" class="form-control" id="investimentos" name="investimentos" #investimentos="ngModel" [(ngModel)]="ativos.investimentos">
+              </td>
+            </tr>
+            <tr>
+              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Total</th>
+              <td>
+                <input type="text" class="form-control" id="total" name="total" #total="ngModel" [(ngModel)]="ativos.total">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bg-white border p-2">
+        <table class="table table-editable">
+          <thead>
+            <tr>
+              <th colspan="3">
+                <p class="font-weight-bold text-center">
+                  Passivos
+                </p>
+              </th>
+            </tr>
+            <tr class="subheader">
+              <th class="text-right">Descrição</th>
+              <th>Valor <small>(R$)</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Imóveis</th>
+              <td>
+                <input type="text" class="form-control" id="imoveis" name="imoveis" #imoveis="ngModel" [(ngModel)]="passivos.imoveis">
+              </td>
+            </tr>
+            <tr>
+              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Veículos</th>
+              <td>
+                <input type="text" class="form-control" id="veiculos" name="veiculos" #veiculos="ngModel" [(ngModel)]="passivos.veiculos">
+              </td>
+            </tr>
+            <tr>
+              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Cartão de Crédito</th>
+              <td>
+                <input type="text" class="form-control" id="cartaoCredito" name="cartaoCredito" #cartaoCredito="ngModel" [(ngModel)]="passivos.cartaoCredito">
+              </td>
+            </tr>
+            <tr>
+              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Outras dívidas</th>
+              <td>
+                <input type="text" class="form-control" id="outrasDividas" name="outrasDividas" #outrasDividas="ngModel" [(ngModel)]="passivos.outrasDividas">
+              </td>
+            </tr>
+            <tr>
+              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Total</th>
+              <td>
+                <input type="text" class="form-control" id="total" name="total" #total="ngModel" [(ngModel)]="passivos.total">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bg-white border p-2">
+        <table class="table table-editable table-responsive">
+          <thead>
+            <tr>
+              <th colspan="3">
+                <p class="font-weight-bold text-center">
+                  Dependentes
+                </p>
+              </th>
+            </tr>
+            <tr class="subheader">
+              <th>Nome</th>
+              <th style="white-space: nowrap;">Gasto Anual</th>
+              <th style="white-space: nowrap;">Tempo<small> (anos)</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of dependentes">
+              <td>
+                <input type="text" class="form-control" id="nome" name="nome" #nome="ngModel" [(ngModel)]="item.nome">
+              </td>
+              <td>
+                <input type="text" class="form-control" id="gastoAnual" name="gastoAnual" #gastoAnual="ngModel" [(ngModel)]="item.gastoAnual">
+              </td>
+              <td>
+                <input type="text" class="form-control" id="tempo" name="tempo" #tempo="ngModel" [(ngModel)]="item.tempo">
+              </td>
+            </tr>
+            <tr>
+              <td class="subheader p-1 px-2 text-white font-weight-bold text-right">Total: </td>
+              <td colspan="2"></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-white border p-2">
+        <table class="table table-editable table-responsive">
+          <thead>
+            <tr>
+              <th colspan="2">
+                <p class="font-weight-bold text-center">
+                  Seguros
+                </p>
+              </th>
+            </tr>
+            <tr class="subheader">
+              <th>Descrição</th>
+              <th style="white-space: nowrap;">Capital Segurado</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of seguro" class="tbody-border">
+            <span class="border"></span>
+            <tr class="bg-light">
+              <td class="font-weight-bold px-2" [class.py-2]="item.capitalSegurado == null" style="white-space: nowrap;">{{ item.titulo }}</td>
+              <td>
+                <input *ngIf="item.capitalSegurado != null" type="text" class="form-control" id="capitalSegurado" name="capitalSegurado" #capitalSegurado="ngModel" [(ngModel)]="item.capitalSegurado">
+              </td>
+            </tr>
+            <tr *ngFor="let child of item.children">
+              <td class="font-weight-bold px-2 pl-3" [class.py-2]="item.capitalSegurado == null" style="white-space: nowrap;">{{ child.titulo }}</td>
+              <td>
+                <input *ngIf="child.capitalSegurado != null" type="text" class="form-control" id="capitalSegurado" name="capitalSegurado" #capitalSegurado="ngModel" [(ngModel)]="child.capitalSegurado">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

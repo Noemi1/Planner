@@ -46,6 +46,11 @@
   text-shadow: 1px 2px 4px #0000004e;
 }
 
+.table-editable .subheader,
+.table-editable .subheader th {
+  background: #4a99b5;
+}
+
 
 .btn-clear-table {
   color: #fff;
@@ -56,4 +61,33 @@
   padding: 3px 0;
   font-weight: bold;
   background: #ffffff17;
+}
+
+.table::-webkit-scrollbar-thumb {
+  background: #595858;
+}
+
+tbody.tbody-border {
+  position: relative;
+}
+
+tbody.tbody-border > span.border {
+  position: absolute;
+  top: -2px;
+  left: 0px;
+  width: calc(100% + 1px);
+  height: 100%;
+  border: 1px #6e6e6e solid;
+  content: '';
+  z-index: 0;
+}
+
+
+tbody.tbody-border tr {
+  z-index: 1;
+  position: relative;
+}
+
+.table .tbody-border+.tbody-border {
+  border-top: 0px solid #dee2e6;
 }
