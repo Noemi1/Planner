@@ -14,6 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { FieldsetModule } from 'primeng/fieldset';
+import { DropdownModule } from 'primeng/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { FieldsetModule } from 'primeng/fieldset';
     HttpClientModule,
     FieldsetModule,
     FormsModule,
+    DropdownModule,
     ToastrModule.forRoot(
       {
         preventDuplicates: true,
