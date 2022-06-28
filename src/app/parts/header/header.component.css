@@ -12,3 +12,7 @@
   margin: 0 auto;
   width: 90%;
 }
+
+.header.dark {
+  background-color: #262626;
+}

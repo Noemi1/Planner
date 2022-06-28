@@ -33,7 +33,6 @@ export class ActionsComponent implements OnInit {
 
   toggleModoEscuro() {
     this.modoEscuro.toggle();
-    console.log('oi')
   }
 
 }

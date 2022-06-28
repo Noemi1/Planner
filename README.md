@@ -1,7 +1,7 @@
 # Para a publicação
 
-### ng build --base-href "https://noemi1.github.io/BSTAR/"
-### npx angular-cli-ghpages --dir=dist/bStar
+### ng build --base-href "https://noemi1.github.io/Planner/"
+### npx angular-cli-ghpages --dir=dist/planner
 
 
 # Referencias 

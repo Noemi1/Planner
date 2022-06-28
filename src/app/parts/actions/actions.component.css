@@ -14,7 +14,7 @@
 .main-actions__items {
   display: flex;
   flex-flow: column;
-  background-color: #146e8d;
+  background-color: var(--primary-dark);
   align-items: center;
   width: 50px;
   padding: 3px 0px;
@@ -47,7 +47,7 @@
   z-index: 0;
   width: 24px;
   height: 40px;
-  background: #3c86a0;
+  background-color: var(--primary);
   border-radius: 0 5px 5px 0;
   border: none;
   box-shadow: 3px 1px 7px -2px #00000052;

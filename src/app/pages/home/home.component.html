@@ -3,7 +3,7 @@
     <div class="col-lg-9 col-md-9 col-sm-12 col-12 px-1">
       <div class="d-flex align-items-stretch flex-wrap">
         <div class="col-lg-5 col-md-5 col-sm-12 col-12 px-lg-1 px-md-0 px-sm-0 mb-md-2 mb-sm-2">
-          <div class="bg-white border p-2">
+          <div class="home__container">
             <div class="form-row">
               <div class="form-group col-lg-9 col-md-9 col-sm-9 col-9">
                 <label for="nome">Nome Completo:</label>
@@ -47,11 +47,12 @@
           </div>
         </div>
         <div class="col-lg-7 col-md-7 col-sm-12 col-12 px-lg-1 px-md-0 px-sm-0 mb-md-2 mb-sm-2">
-          <div class="bg-white border p-2">
+          <div class="home__container">
             <div class="form-row">
               <div class="form-group col-lg-7 col-md-6 col-sm-4 col-8">
-                <label for="">Perfil de Investidor:</label>
-                <select name="" id="" class=" form-control">
+                <label for="perfilInvestidor">Perfil de Investidor:</label>
+                <select name="perfilInvestidor" id="perfilInvestidor" name="perfilInvestidor" #perfilInvestidorSelect class="form-control">
+                  <option [value]="item.id" *ngFor="let item of perfilInvestidor">{{ item.nome }}</option>
                 </select>
               </div>
               <div class="form-group col-lg-5 col-md-5 col-sm-4 col-4">
@@ -121,7 +122,7 @@
         </div>
       </div>
       <div class="d-flex align-items-stretch">
-        <div class="form-container bg-white border mt-3 col-lg-12">
+        <div class="form-container home__container mt-3 col-lg-12">
           <div class="form-container-title">
             <p class="font-weight-bold">Cálculos</p>
           </div>
@@ -144,7 +145,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let item of calculos">
-                  <th class="px-3 font-weight-bold text-right">{{item.tipo}}</th>
+                  <td class="px-3 bg-light text-right"><small><b>{{item.tipo}}</b></small></td>
                   <td>
                     <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo="ngModel" [ngModel]="item.baixissimo | currency : 'BRL' : 'R$ ' : '1.0-2'" (change)="item.baixissimo = baixissimo.value">
                   </td>
@@ -174,7 +175,7 @@
         </div>
       </div>
       <div class="d-flex align-items-stretch">
-        <div class="form-container bg-white border mt-3 col-lg-12">
+        <div class="form-container home__container mt-3 col-lg-12">
           <div class="form-container-title">
             <p class="font-weight-bold">Investimentos</p>
           </div>
@@ -193,7 +194,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let item of investimento">
-                  <th class="px-3 font-weight-bold text-right" style="white-space: nowrap;">{{item.tipo}}</th>
+                  <td class="px-3 bg-light text-right" style="white-space: nowrap;"><small><b>{{item.tipo}}</b></small></td>
                   <td>
                     <input type="text" class="form-control" id="rentabilidade" name="rentabilidade" #rentabilidade>
                   </td>
@@ -218,9 +219,67 @@
           </div>
         </div>
       </div>
+      <div class="d-flex align-items-stretch">
+        <div class="form-container home__container mt-3 col-lg-12">
+          <div class="form-container-title">
+            <p class="font-weight-bold">Solução Inicial</p>
+          </div>
+          <div class="form-container-baixo">
+            <table class="table table-editable table-responsive">
+              <thead>
+                <tr>
+                  <th colspan="6" class="text-center p-3"><h4>Agregando Valor</h4></th>
+                </tr>
+                <tr class="subheader border border-right-0 border-left-0">
+                  <th colspan="2" class="text-right">Montante Total</th>
+                  <th>0</th>
+                  <th>Exposição a Risco</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr class="subheader">
+                  <th style="white-space: nowrap;" class="text-right">Carteira</th>
+                  <th style="white-space: nowrap;">Rentabilidade Atual <small>(ano)</small></th>
+                  <th style="white-space: nowrap;">Retorno anual <small>(R$)</small></th>
+                  <th style="white-space: nowrap;">Retorno mensal <small>(R$)</small></th>
+                  <th style="white-space: nowrap;">Patrimônio Máximo <small>(R$)</small></th>
+                  <th style="white-space: nowrap;">Tempo <small>(anos)</small></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of carteira">
+                  <td class="px-3 bg-light text-right" style="white-space: nowrap;"><small><b>{{item.tipo}}</b></small></td>
+                  <td>
+                    <input type="text" class="form-control" id="rentabilidadeAtual" name="rentabilidadeAtual" #rentabilidadeAtual="ngModel" [(ngModel)]="item.rentabilidadeAtual">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="retornoAnual" name="retornoAnual" #retornoAnual="ngModel" [(ngModel)]="item.retornoAnual">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="retornoMensal" name="retornoMensal" #retornoMensal="ngModel" [(ngModel)]="item.retornoMensal">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="patrimonioMaximo" name="patrimonioMaximo" #patrimonioMaximo="ngModel" [(ngModel)]="item.patrimonioMaximo">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="tempo" name="tempo" #tempo="ngModel" [(ngModel)]="item.tempo">
+                  </td>
+                </tr>
+
+                <tr>
+                  <td colspan="3" class="p-3 bg-light text-center" style="white-space: nowrap;">Melhora de Desempenho</td>
+                  <td><fa-icon [icon]="faArrowRight"></fa-icon></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-12 col-12 px-1">
-      <div class="bg-white border p-2 mb-2">
+      <div class="home__container">
         <table class="table table-editable table-responsive w-100 d-md-table d-sm-table">
           <thead>
             <tr>
@@ -231,7 +290,7 @@
           </thead>
           <tbody>
             <tr>
-              <td class="px-3 font-weight-bold text-right">Idade</td>
+              <td class="bg-light px-3 text-right" style="white-space: nowrap;"><small><b>Idade</b></small></td>
               <td>
                 <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
               </td>
@@ -240,7 +299,7 @@
               </td>
             </tr>
             <tr>
-              <td class="px-3 font-weight-bold text-right" style="white-space: nowrap;">Renda Mensal</td>
+              <td class="bg-light px-3 text-right" style="white-space: nowrap;"><small><b>Renda Mensal</b></small></td>
               <td>
                 <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
               </td>
@@ -249,7 +308,7 @@
               </td>
             </tr>
             <tr>
-              <td class="px-3 font-weight-bold text-right">Rentabilidade</td>
+              <td class="bg-light px-3 text-right" style="white-space: nowrap;"><small><b>Rentabilidade</b></small></td>
               <td>
                 <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
               </td>
@@ -260,7 +319,7 @@
           </tbody>
         </table>
       </div>
-      <div class="bg-white border p-2 mb-2">
+      <div class="home__container">
         <table class="table table-editable table-responsive w-100 d-md-table d-sm-table">
           <thead>
             <tr>
@@ -301,7 +360,7 @@
           </tbody>
         </table>
       </div>
-      <div class="bg-white border p-2 mb-2">
+      <div class="home__container">
         <table class="table table-editable table-responsive w-100 d-md-table d-sm-table">
           <thead>
             <tr>
@@ -411,7 +470,7 @@
           </tbody>
         </table>
       </div>
-      <div class="bg-white border p-2 mb-2">
+      <div class="home__container">
         <table class="table table-editable table-responsive w-100 d-md-table d-sm-table">
           <thead>
             <tr>
@@ -428,31 +487,31 @@
           </thead>
           <tbody>
             <tr>
-              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Imóveis</th>
+              <td class="bg-light px-3 text-right" style="white-space: nowrap;"><small><b>Imóveis</b></small></td>
               <td>
                 <input type="text" class="form-control" id="imoveis" name="imoveis" #imoveis="ngModel" [(ngModel)]="ativos.imoveis">
               </td>
             </tr>
             <tr>
-              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Veículos</th>
+              <td class="bg-light px-3 text-right" style="white-space: nowrap;"><small><b>Veículos</b></small></td>
               <td>
                 <input type="text" class="form-control" id="veiculos" name="veiculos" #veiculos="ngModel" [(ngModel)]="ativos.veiculos">
               </td>
             </tr>
             <tr>
-              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Outros Bens</th>
+              <td class="bg-light px-3 text-right" style="white-space: nowrap;"><small><b>Outros Bens</b></small></td>
               <td>
                 <input type="text" class="form-control" id="outrosBens" name="outrosBens" #outrosBens="ngModel" [(ngModel)]="ativos.outrosBens">
               </td>
             </tr>
             <tr>
-              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Investimentos</th>
+              <td class="bg-light px-3 text-right" style="white-space: nowrap;"><small><b>Investimentos</b></small></td>
               <td>
                 <input type="text" class="form-control" id="investimentos" name="investimentos" #investimentos="ngModel" [(ngModel)]="ativos.investimentos">
               </td>
             </tr>
             <tr>
-              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Total</th>
+              <td class="bg-light px-3 text-right" style="white-space: nowrap;"><small><b>Total</b></small></td>
               <td>
                 <input type="text" class="form-control" id="total" name="total" #total="ngModel" [(ngModel)]="ativos.total">
               </td>
@@ -460,7 +519,7 @@
           </tbody>
         </table>
       </div>
-      <div class="bg-white border p-2 mb-2">
+      <div class="home__container">
         <table class="table table-editable table-responsive w-100 d-md-table d-sm-table">
           <thead>
             <tr>
@@ -477,31 +536,31 @@
           </thead>
           <tbody>
             <tr>
-              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Imóveis</th>
+              <td class="bg-light px-3 text-right" style="white-space: nowrap;"><small><b>Imóveis</b></small></td>
               <td>
                 <input type="text" class="form-control" id="imoveis" name="imoveis" #imoveis="ngModel" [(ngModel)]="passivos.imoveis">
               </td>
             </tr>
             <tr>
-              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Veículos</th>
+              <td class="bg-light px-3 text-right" style="white-space: nowrap;"><small><b>Veículos</b></small></td>
               <td>
                 <input type="text" class="form-control" id="veiculos" name="veiculos" #veiculos="ngModel" [(ngModel)]="passivos.veiculos">
               </td>
             </tr>
             <tr>
-              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Cartão de Crédito</th>
+              <td class="bg-light px-3 text-right" style="white-space: nowrap;"><small><b>Cartão de Crédito</b></small></td>
               <td>
                 <input type="text" class="form-control" id="cartaoCredito" name="cartaoCredito" #cartaoCredito="ngModel" [(ngModel)]="passivos.cartaoCredito">
               </td>
             </tr>
             <tr>
-              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Outras dívidas</th>
+              <td class="bg-light px-3 text-right" style="white-space: nowrap;"><small><b>Outras dívidas</b></small></td>
               <td>
                 <input type="text" class="form-control" id="outrasDividas" name="outrasDividas" #outrasDividas="ngModel" [(ngModel)]="passivos.outrasDividas">
               </td>
             </tr>
             <tr>
-              <th class="subheader px-3 font-weight-bold text-right" style="white-space: nowrap;">Total</th>
+              <td class="bg-light px-3 text-right" style="white-space: nowrap;"><small><b>Total</b></small></td>
               <td>
                 <input type="text" class="form-control" id="total" name="total" #total="ngModel" [(ngModel)]="passivos.total">
               </td>
@@ -509,7 +568,7 @@
           </tbody>
         </table>
       </div>
-      <div class="bg-white border p-2 mb-2">
+      <div class="home__container">
         <table class="table table-editable table-responsive w-100 d-md-table d-sm-table">
           <thead>
             <tr>
@@ -545,37 +604,98 @@
           </tbody>
         </table>
       </div>
-      <div class="bg-white border p-2 mb-2">
-        <table class="table table-editable table-responsive w-100 d-md-table d-sm-table">
-          <thead>
-            <tr>
-              <th colspan="2">
-                <p class="font-weight-bold text-center">
-                  Seguros
-                </p>
-              </th>
-            </tr>
-            <tr class="subheader">
-              <th>Descrição</th>
-              <th style="white-space: nowrap;">Capital Segurado</th>
-            </tr>
-          </thead>
-          <tbody *ngFor="let item of seguro" class="tbody-border">
-            <span class="border"></span>
-            <tr class="bg-light">
-              <td class="font-weight-bold px-2" [class.py-2]="item.capitalSegurado == null" style="white-space: nowrap;">{{ item.titulo }}</td>
-              <td>
-                <input *ngIf="item.capitalSegurado != null" type="text" class="form-control" id="capitalSegurado" name="capitalSegurado" #capitalSegurado="ngModel" [(ngModel)]="item.capitalSegurado">
-              </td>
-            </tr>
-            <tr *ngFor="let child of item.children">
-              <td class="font-weight-bold px-2 pl-3" [class.py-2]="item.capitalSegurado == null" style="white-space: nowrap;">{{ child.titulo }}</td>
-              <td>
-                <input *ngIf="child.capitalSegurado != null" type="text" class="form-control" id="capitalSegurado" name="capitalSegurado" #capitalSegurado="ngModel" [(ngModel)]="child.capitalSegurado">
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="home__container">
+        <div class="overflow-x-auto">
+          <table class="table table-editable table-responsive w-100 d-md-table d-sm-table">
+            <thead>
+              <tr>
+                <th colspan="2">
+                  <p class="font-weight-bold text-center">
+                    Seguros
+                  </p>
+                </th>
+              </tr>
+              <tr class="subheader">
+                <th class="text-right">Descrição</th>
+                <th style="white-space: nowrap;">Capital Segurado</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let item of seguro" class="tbody-border">
+              <span class="border"></span>
+              <tr class="bg-light">
+                <td class="px-2 text-right" [class.py-2]="item.capitalSegurado == null" style="white-space: nowrap;"><small><b>{{ item.titulo }}</b></small></td>
+                <td>
+                  <input *ngIf="item.capitalSegurado != null" type="text" class="form-control" id="capitalSegurado" name="capitalSegurado" #capitalSegurado="ngModel" [(ngModel)]="item.capitalSegurado">
+                </td>
+              </tr>
+              <tr *ngFor="let child of item.children">
+                <td class="px-2 pl-3 text-right" [class.py-2]="item.capitalSegurado == null" style="white-space: nowrap;"><small>{{ child.titulo }}</small></td>
+                <td>
+                  <input *ngIf="child.capitalSegurado != null" type="text" class="form-control" id="capitalSegurado" name="capitalSegurado" #capitalSegurado="ngModel" [(ngModel)]="child.capitalSegurado">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="home__container">
+        <div class="overflow-x-auto">
+          <table class="table table-editable table-responsive w-100 d-md-table d-sm-table">
+            <thead>
+              <tr>
+                <th colspan="3">
+                  <p class="font-weight-bold text-center">
+                    Dados para Seguro de Vida
+                  </p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="px-3 bg-light text-right"><small><b>Altura</b></small></td>
+                <td><input type="text" class="form-control" id="altura" name="altura" #altura="ngModel" [(ngModel)]="dadosSeguroVida.altura"></td>
+                <td class="px-3 bg-light"><small><b>IMC</b></small></td>
+              </tr>
+              <tr>
+                <td class="px-3 bg-light text-right"><small><b>Peso</b></small></td>
+                <td><input type="text" class="form-control" id="peso" name="peso" #peso="ngModel" [(ngModel)]="dadosSeguroVida.peso"></td>
+                <td><input type="text" class="form-control" id="imc" name="imc" #imc="ngModel" [(ngModel)]="dadosSeguroVida.imc"></td>
+              </tr>
+              <tr>
+                <td class="px-3 bg-light text-right" style="white-space: nowrap;"><small><b>Estado Civil</b></small></td>
+                <td colspan="2">
+                  <select type="text" class="form-control" id="estadoCivil" name="estadoCivil" #estadoCivilSelect="ngModel" [(ngModel)]="dadosSeguroVida.estadoCivil">
+                    <option [ngValue]="item.id" *ngFor="let item of estadoCivil">{{item.nome}}</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-3 bg-light text-right" style="white-space: nowrap;"><small><b>Data Nascimento</b></small></td>
+                <td colspan="2">
+                  <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" #dataNascimento="ngModel" [(ngModel)]="dadosSeguroVida.dataNascimento">
+                </td>
+              </tr>
+              <tr>
+                <td class="px-3 bg-light text-right" style="white-space: nowrap;"><small><b>CPF</b></small></td>
+                <td colspan="2">
+                  <input type="text" class="form-control" id="cpf" name="cpf" #cpf="ngModel" [(ngModel)]="dadosSeguroVida.cpf">
+                </td>
+              </tr>
+              <tr>
+                <td class="px-3 bg-light text-right" style="white-space: nowrap;"><small><b>RG</b></small></td>
+                <td colspan="2">
+                  <input type="text" class="form-control" id="rg" name="rg" #rg="ngModel" [(ngModel)]="dadosSeguroVida.rg">
+                </td>
+              </tr>
+              <tr>
+                <td class="px-3 bg-light text-right" style="white-space: nowrap;"><small><b>E-mail</b></small></td>
+                <td colspan="2">
+                  <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="dadosSeguroVida.email">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

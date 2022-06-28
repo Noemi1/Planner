@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ModoEscuro } from './helpers/modo-escuro';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { ModoEscuro } from './helpers/modo-escuro';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  
+
   modoEscuroAtivado = false;
 
   constructor(
@@ -17,6 +18,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
+
+
 }

@@ -16,15 +16,11 @@
 
 
 :root {
-	--orange: #ff6315;
+	--primary: #3c86a0;
+	--primary-light: #4a99b5;
+	--primary-dark: #146e8d;
 	--dark: #000;
-	--grey: rgb(24, 24, 24);
-	--purple: #8c47dc;
-	--purple-dark: #7031b8;
-	--pink: #F94184;
-	--pink-dark: #eb236c;
-	--light: pink;
-	--grey-light: pink;
+	--grey: #181818;
 }
 
 * {
@@ -1241,4 +1237,11 @@ tbody tr.alert-dark:nth-of-type(even) td {
 [novalidate] .form-control:hover {
   box-shadow: 0 0 0 2.2px rgb(255 99 21 / 21%);
   border-color: transparent!important;
+}
+
+.border-left-0 {
+  border-left: 0!important;
+}
+.border-right-0 {
+  border-right: 0!important;
 }

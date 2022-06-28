@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModoEscuro } from 'src/app/helpers/modo-escuro';
 
 @Component({
   selector: 'app-header',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  modoEscuroAtivado = false;
 
-  constructor() { }
+  constructor(
+    private modoEscuro: ModoEscuro
+  ) {
+    this.modoEscuro.ativado.subscribe(res => this.modoEscuroAtivado = res);
+  }
 
   ngOnInit(): void {
   }

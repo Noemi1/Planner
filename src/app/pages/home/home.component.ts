@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  faArrowRight = faArrowRight;
+
   calculos = [
     { id: 0, baixissimo: 50, baixo: 50, moderado: 50, arrojado: 50, superArrojado: 50, hedge: 50, total: 0, tipo: 'Sugestão' },
     { id: 1, baixissimo: 50, baixo: 50, moderado: 50, arrojado: 50, superArrojado: 50, hedge: 50, total: 0, tipo: 'Plano' },
@@ -37,7 +41,6 @@ export class HomeComponent implements OnInit {
     { tipo: 'Previdência em Dólar', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
 
   ];
-
 
   ativos = {
     imoveis: 0,
@@ -78,9 +81,50 @@ export class HomeComponent implements OnInit {
     { titulo: 'Prêmio adequado (5% da renda)', capitalSegurado: 0, children: null },
   ];
 
-  constructor() { }
+  dadosSeguroVida = {
+    altura: 0,
+    peso: 0,
+    imc: 0,
+    estadoCivil: 0,
+    dataNascimento: new Date,
+    cpf: '',
+    rg: '',
+    email: '',
+  }
+
+  estadoCivil = [
+    { id: 0, nome: 'Solteiro' },
+    { id: 1, nome: 'Casado' },
+    { id: 2, nome: 'Separado' },
+    { id: 3, nome: 'Divorciado' },
+    { id: 4, nome: 'Viúvo' },
+  ];
+
+  carteira = [
+    { tipo: 'Atual', rentabilidadeAtual: 0, retornoAnual: 0, retornoMensal: 0, patrimonioMaximo: 0, tempo: 0, },
+    { tipo: 'Sugerida', rentabilidadeAtual: 0, retornoAnual: 0, retornoMensal: 0, patrimonioMaximo: 0, tempo: 0, },
+    { tipo: 'Diferença', rentabilidadeAtual: 0, retornoAnual: 0, retornoMensal: 0, patrimonioMaximo: 0, tempo: 0, },
+  ];
+
+  perfilInvestidor = [
+    { id: 0, nome: 'Super Conservador (até 20% do patrimônio em Risco)' },
+    { id: 1, nome: 'Conservador (de 20% à 30% do patrimônio em Risco)' },
+    { id: 2, nome: 'Moderado (de 30% à 50% do patrimônio em Risco)' },
+    { id: 3, nome: 'Arrojado (de 50% à 80% do patrimônio em Risco)' },
+    { id: 4, nome: 'Super Arrojado (100% do patrimônio em Risco)' },
+  ]
+
+  constructor() {
+    this.dadosSeguroVida.imc = this.calcularIMC(this.dadosSeguroVida);
+  }
 
   ngOnInit(): void {
+  }
+
+  calcularIMC(obj: any) {
+    var imc = obj.peso / (obj.altura^2);
+    console.log(imc);
+    return imc;
   }
 
 }
