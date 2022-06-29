@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private modoEscuro: ModoEscuro
   ) {
-    this.modoEscuro.ativado.subscribe(res => this.modoEscuroAtivado = res);
+    this.modoEscuro.getAtivado().subscribe(res => this.modoEscuroAtivado = res);
   }
 
   ngOnInit(): void {

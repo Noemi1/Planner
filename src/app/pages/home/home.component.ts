@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { ModoEscuro } from 'src/app/helpers/modo-escuro';
 
 @Component({
   selector: 'app-home',
@@ -114,8 +115,12 @@ export class HomeComponent implements OnInit {
     { id: 4, nome: 'Super Arrojado (100% do patrimônio em Risco)' },
   ]
 
-  constructor() {
+  modoEscuroAtivado = false;
+  constructor(
+    private modoEscuro: ModoEscuro,
+  ) {
     this.dadosSeguroVida.imc = this.calcularIMC(this.dadosSeguroVida);
+    this.modoEscuro.getAtivado().subscribe(res => this.modoEscuroAtivado = res);
   }
 
   ngOnInit(): void {

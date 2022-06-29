@@ -21,7 +21,7 @@ export class ActionsComponent implements OnInit {
     private modoEscuro: ModoEscuro,
   ) {
     this.actions.open.subscribe(res => this.open = res);
-    this.modoEscuro.ativado.subscribe(res => this.modoEscuroAtivado = res);
+    this.modoEscuro.getAtivado().subscribe(res => this.modoEscuroAtivado = res);
   }
 
   ngOnInit(): void {
