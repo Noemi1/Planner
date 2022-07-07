@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { Colors } from 'src/app/helpers/colors.enum';
 import { ModoEscuro } from 'src/app/helpers/modo-escuro';
 
 @Component({
@@ -17,35 +18,35 @@ export class HomeComponent implements OnInit {
   ];
 
   investimento = [
-    { tipo: 'Poupança', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Tesouro', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'RF (CDB/LCI/LCA)', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Previdência (VGBL)', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Debêntures/COE', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Fundo RF', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'FII', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'FIM/FIC e afins', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'FIA', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Ações', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Imóveis (Aluguel)', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Dólar/Ouro', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Criptoativos', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Outros', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Reserva de Emergência', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'C.A. Conservador', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'C.A. Moderado', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'C.A. Arrojado', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Mesa Proprietária (You Capital)', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Private Equity Imobiliário', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Private Equity Gado', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Private Equity Usina Solar', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Previdência em Dólar', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0,  montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Poupança', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Tesouro', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'RF (CDB/LCI/LCA)', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Previdência (VGBL)', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Debêntures/COE', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Fundo RF', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'FII', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'FIM/FIC e afins', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'FIA', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Ações', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Imóveis (Aluguel)', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Dólar/Ouro', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Criptoativos', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Outros', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Reserva de Emergência', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'C.A. Conservador', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'C.A. Moderado', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'C.A. Arrojado', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Mesa Proprietária (You Capital)', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Private Equity Imobiliário', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Private Equity Gado', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Private Equity Usina Solar', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
+    { tipo: 'Previdência em Dólar', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
 
   ];
 
   ativos = {
     imoveis: 0,
-    veiculos:0,
+    veiculos: 0,
     outrosBens: 0,
     investimentos: 0,
     total: 0,
@@ -53,7 +54,7 @@ export class HomeComponent implements OnInit {
 
   passivos = {
     imoveis: 0,
-    veiculos:0,
+    veiculos: 0,
     cartaoCredito: 0,
     outrasDividas: 0,
     total: 0,
@@ -66,16 +67,20 @@ export class HomeComponent implements OnInit {
   ]
 
   seguro = [
-    { titulo: 'Morte Qualquer Causa (MQC)', capitalSegurado: 0, children: [
+    {
+      titulo: 'Morte Qualquer Causa (MQC)', capitalSegurado: 0, children: [
         { titulo: 'Invetário (Vit.)	São Paulo', capitalSegurado: 0 },
         { titulo: 'Dívidas (Temp. Decresc.)	', capitalSegurado: 0 },
         { titulo: 'Dependentes (Temp. Decresc.)	', capitalSegurado: 0 },
         { titulo: '5 anos de despesa (MQC)	', capitalSegurado: 0 },
-    ] },
-    { titulo: 'Diária por Incapacidade Temporária', capitalSegurado: null, children: [
-      { titulo: 'por acidente e doença', capitalSegurado: 0 },
-      { titulo: 'apenas por acidente', capitalSegurado: 0 },
-    ]},
+      ]
+    },
+    {
+      titulo: 'Diária por Incapacidade Temporária', capitalSegurado: null, children: [
+        { titulo: 'por acidente e doença', capitalSegurado: 0 },
+        { titulo: 'apenas por acidente', capitalSegurado: 0 },
+      ]
+    },
     { titulo: 'Morte Acidental', capitalSegurado: 0, children: null },
     { titulo: 'Assistência Funerária', capitalSegurado: 0, children: null },
     { titulo: 'Responsabilidade Cívil', capitalSegurado: 0, children: null },
@@ -116,20 +121,103 @@ export class HomeComponent implements OnInit {
   ]
 
   modoEscuroAtivado = false;
+  patrimonioPorIdade: any;
+  patrimonioPorIdade_options: any;
+
+  capitalSegurado: any;
+  capitalSegurado_options: any;
+  
   constructor(
     private modoEscuro: ModoEscuro,
   ) {
     this.dadosSeguroVida.imc = this.calcularIMC(this.dadosSeguroVida);
     this.modoEscuro.getAtivado().subscribe(res => this.modoEscuroAtivado = res);
+    this.patrimonioPorIdade = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [
+        {
+          type: 'line',
+          label: 'Atual',
+          data: [65, 59, 80, 81, 56, 55, 40]
+        },
+        {
+          type: 'bar',
+          label: 'Planejado',
+          data: [28, 48, 40, 19, 86, 27, 90]
+        }
+      ]
+    }
+
+    this.patrimonioPorIdade_options = {
+      plugins: {
+        title: {
+            display: true,
+            text: 'Patrimônio por Idade',
+            font: {
+              size: 26
+            },
+            color: Colors.primary
+        },
+        subtitle: {
+            display: true,
+            text: 'Planejado x Realidade Atual',
+            font: {
+              size: 22
+            },
+            color: Colors.grey
+        },
+        legend: {
+          position: 'top'
+        }
+    },
+    };
+    this.capitalSegurado = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [
+        {
+          type: 'line',
+          label: 'Renda Interrompida 0 anos antes',
+          data: [39, 52, 36, 47, 14, 55, 74],
+        },
+        {
+          type: 'bar',
+          label: 'Capital Segurado',
+          data: [74, 65, 87, 19, 25, 25, 25],
+        },
+        {
+          type: 'bar',
+          label: 'Planejado',
+          data: [28, 48, 40, 19, 86, 27, 90],
+        }
+      ]
+    }
+
+    this.capitalSegurado_options = {
+      plugins: {
+        title: {
+            display: true,
+            text: 'Capital Segurado x Evolução Patrimonial',
+            font: {
+              size: 26
+            },
+            color: Colors.primary
+        },
+        legend: {
+          position: 'top'
+        }
+    },
+    };
   }
 
   ngOnInit(): void {
   }
 
   calcularIMC(obj: any) {
-    var imc = obj.peso / (obj.altura^2);
+    var imc = obj.peso / (obj.altura ^ 2);
     console.log(imc);
     return imc;
   }
+
+
 
 }

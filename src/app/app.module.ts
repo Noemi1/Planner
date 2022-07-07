@@ -15,13 +15,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { FieldsetModule } from 'primeng/fieldset';
 import { DropdownModule } from 'primeng/dropdown';
+import { SolucoesComponent } from './pages/solucoes/solucoes.component';
+import { ChartModule } from 'primeng/chart';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ActionsComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SolucoesComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +42,7 @@ import { DropdownModule } from 'primeng/dropdown';
         timeOut: 8000
       }),
     TableModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
