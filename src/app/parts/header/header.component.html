@@ -1,7 +1,30 @@
 <header class="header" [class.dark]="modoEscuroAtivado">
-  <div class="wrapper">
-    <div class="header__inner">
-
-    </div>
-  </div>
+      <div class="header__userLogado">
+          <div class="header__userLogado-content" [class.header__userLogado-submenu--open]="userLogadoOpen"
+              (click)="toggleMenuHeader()">
+              <div class="header__userLogado-img" >
+              </div>
+              <div class="header__userLogado-text">
+                  <p><strong>Noemi C. Almeida</strong></p>
+              </div>
+          </div>
+          <div class="header__userLogado-submenu" [class.header__userLogado-submenu--open]="userLogadoOpen">
+              <p class="header__userLogado-submenu-link">Welcome</p>
+              <a class="header__userLogado-submenu-link" [routerLink]="['my-account']">
+                  <span style="margin-right: 8px;">
+                      <fa-icon [icon]="faIdCard"></fa-icon>
+                  </span> Meus dados
+              </a>
+              <a class="header__userLogado-submenu-link" [routerLink]="['reset-password']">
+                  <span style="margin-right: 8px;">
+                      <fa-icon [icon]="faKey"></fa-icon>
+                  </span> Alterar senha
+              </a>
+              <a class="header__userLogado-submenu-link" (click)="sair()">
+                  <span style="margin-right: 8px;">
+                      <fa-icon [icon]="faSignOut"></fa-icon>
+                  </span> Sair
+              </a>
+          </div>
+      </div>
 </header>

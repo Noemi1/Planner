@@ -21,6 +21,7 @@
 	--primary-dark: #146e8d;
 	--dark: #000;
 	--grey: #181818;
+	--grey-light: #242424;
 	--red: #e81717;
 }
 
@@ -178,14 +179,6 @@ hr {
 }
 
 
-.btn-gray, .btn-gray:not([href]) {
-	background: var(--dark);
-	color: #fff !important;
-}
-
-.bg-dark {
-	background-color: var(--dark) !important;
-}
 
 a.btn-primary:not([href]):hover,
 .btn-primary:hover {
@@ -256,18 +249,29 @@ a.btn-orange:not([href]):focus {
 	opacity: 0.8;
 }
 
-.btn-gray:not(:disabled):not(.disabled):not(.btn[disabled]).active, .btn-gray:not(:disabled):not(.disabled):not(.btn[disabled]):active, .show>.btn-gray.dropdown-toggle, .btn-gray:not(:disabled):not(.disabled):not(.btn[disabled]).active:focus, .btn-gray:not(:disabled):not(.disabled):not(.btn[disabled]):active:focus, .show>.btn-gray.dropdown-toggle:focus, .btn-gray.focus, .btn-gray:focus, .btn-gray:hover {
-	background-color: #171616;
-	border-color: #171616;
+.btn-grey, .btn-grey:not([href]) {
+	background-color: var(--grey);
+	color: #fff !important;
+}
+.btn-grey:not(:disabled):not(.disabled):not(.btn[disabled]).active, 
+.btn-grey:not(:disabled):not(.disabled):not(.btn[disabled]):active, 
+.show>.btn-grey.dropdown-toggle, 
+.btn-grey:not(:disabled):not(.disabled):not(.btn[disabled]).active:focus, 
+.btn-grey:not(:disabled):not(.disabled):not(.btn[disabled]):active:focus, 
+.show>.btn-grey.dropdown-toggle:focus, 
+.btn-grey.focus, 
+.btn-grey:focus, .btn-grey:hover {
+	background-color: var(--grey);
+	border-color: var(--grey);
 	box-shadow: 0 0px 0 2px rgb(39 38 38 / 38%);
 	color: #fff;
 }
-
-.btn-gray.disabled, .btn-gray:disabled, .btn-gray[disabled] {
-	background-color: #171616;
-	border-color: #171616;
+.btn-grey.disabled, .btn-grey:disabled, .btn-grey[disabled] {
+	background-color: var(--grey-light);
+	border-color: var(--grey-light);
 	opacity: 0.7;
 }
+
 
 .btn-dark {
 	color: #fff;
@@ -541,7 +545,7 @@ a.btn-pink.disabled:not([href]) {
 }
 
 .link:hover {
-	color: #910000;
+	color: var(--primary-dark);
 }
 
 .form-control, input {
@@ -612,11 +616,14 @@ form .form-control.ng-touched.ng-valid:not(.novalidate .form-control.ng-touched.
 
 .form-floating>label {
 	width: 100%;
-    padding: 1rem 20px;
+    padding: 10px 15px;
+    display: flex!important;
+    align-items: center;
 }
 
 .form-floating > .form-control {
-    padding: 1rem 20px;
+    padding: 10px 15px;
+    height: 45px;
 }
 
 .btn-link {
@@ -793,25 +800,25 @@ form .form-control.ng-touched.ng-valid:not(.novalidate .form-control.ng-touched.
 }
 
 
-.btn-gray-light, .btn-gray-light:not([href]) {
+.btn-grey-light, .btn-grey-light:not([href]) {
 	background: #e6e6e6;
 	border: 1px #e6e6e6 solid;
 	color: #1D1D21;
 }
 
-.btn-gray-light:hover {
+.btn-grey-light:hover {
 	color: #1d1d1d;
 	background-color: #d8d8d8;
 	border-color: #d8d8d8;
 }
 
-.btn-gray-light:not(:disabled):not(.disabled).active, .btn-gray-light:not(:disabled):not(.disabled):active, .show>.btn-gray-light.dropdown-toggle {
+.btn-grey-light:not(:disabled):not(.disabled).active, .btn-grey-light:not(:disabled):not(.disabled):active, .show>.btn-grey-light.dropdown-toggle {
 	background-color: #d8d8d8;
 	border-color: #d8d8d8;
 	color: #1D1D21;
 }
 
-.btn-gray-light:focus+.btn-gray-light, .btn-gray-light:focus {
+.btn-grey-light:focus+.btn-grey-light, .btn-grey-light:focus {
 	background-color: #d8d8d8;
 	border-color: #d8d8d8;
 	box-shadow: 0 0 0 2px rgb(0 0 0 / 25%);
@@ -1262,3 +1269,4 @@ tbody tr.alert-dark:nth-of-type(even) td {
 .border-right-0 {
   border-right: 0!important;
 }
+

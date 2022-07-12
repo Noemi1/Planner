@@ -4,15 +4,122 @@
   top: 0;
   left: 0;
   width: 100vw;
-  background: #cbcbcb;
+  background-color: #cbcbcb;
+  z-index: 1;
 }
 
-.wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
+.header__userLogado {
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  max-width: 200px;
   width: 90%;
+  margin-right: 20px;
 }
 
-.header.dark {
-  background-color: #262626;
+.header__userLogado-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.header__userLogado-content:hover {
+  background-color: #ffffff5c;
+}
+
+.header__userLogado-content.header__userLogado-submenu--open {
+  background-color: #f8f8f8;
+  border: 1px #d2d2d2 solid;
+  border-top: none;
+  border-bottom: none;
+}
+
+.header__userLogado-content.header__userLogado-submenu--open:hover {
+  background-color: #f8f8f8;
+}
+
+.header__userLogado-img {
+  width: 20px;
+  height: 20px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  border: 1px #2f353e solid;
+  cursor: pointer;
+  margin-left: -15px;
+}
+
+.header__userLogado-text p {
+  margin-left: 15px;
+  color: #6b7077;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.header__userLogado-text {
+  margin-left: 15px;
+  color: #6b7077;
+  cursor: pointer;
+}
+
+.header__userLogado-text p {
+  margin: 0;
+  line-height: 16px;
+  font-size: 11px;
+  font-family: Regular;
+}
+
+.header__userLogado-submenu {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  right: 2vw;
+  transform: translate(0, -100%);
+  min-width: 100%;
+  background-color: white;
+  border: 1px #d2d2d2 solid;
+  border-top: 0;
+  border-radius: 0 0 3px 3px;
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  padding: 5px 0;
+  opacity: 0;
+  z-index: 0;
+  visibility: hidden;
+  transition: .3s;
+  background-color: #ffffff;
+}
+
+.header__userLogado-submenu.header__userLogado-submenu--open {
+  transform: translate(0, 0px);
+  opacity: 1;
+  visibility: visible;
+  transition: .3s;
+  top: 100%;
+}
+
+p.header__userLogado-submenu-link {
+  font-weight: bold;
+}
+
+.header__userLogado-submenu-link {
+  padding: 4px 15px;
+  font-size: 11px;
+  font-family: 'Regular';
+  color: #888;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.header__userLogado-submenu-link:not(p):hover {
+  background-color: #cdcdcd70;
 }

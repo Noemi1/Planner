@@ -214,7 +214,6 @@ export class HomeComponent implements OnInit {
 
   calcularIMC(obj: any) {
     var imc = obj.peso / (obj.altura ^ 2);
-    console.log(imc);
     return imc;
   }
 

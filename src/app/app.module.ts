@@ -17,6 +17,12 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { DropdownModule } from 'primeng/dropdown';
 import { ChartModule } from 'primeng/chart';
 import { InitialComponent } from './parts/initial/initial.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { MyAccountComponent } from './parts/my-account/my-account.component';
+import { LoadingComponent } from './parts/loading/loading.component';
+import { AlertComponent } from './parts/alert/alert.component';
+import { ForgotPasswordComponent } from './pages/account/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './parts/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +31,11 @@ import { InitialComponent } from './parts/initial/initial.component';
     ActionsComponent,
     HeaderComponent,
     FooterComponent,
-    InitialComponent
+    InitialComponent,
+    MyAccountComponent,
+    ResetPasswordComponent,
+    LoadingComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +52,8 @@ import { InitialComponent } from './parts/initial/initial.component';
         timeOut: 8000
       }),
     TableModule,
-    ChartModule
+    ChartModule,
+    NgxMaskModule.forRoot({validation: true})
   ],
   providers: [],
   bootstrap: [AppComponent]

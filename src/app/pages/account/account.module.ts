@@ -3,21 +3,22 @@ import { CommonModule } from '@angular/common';
 
 import { AccountRoutingModule } from './account-routing.module';
 import { LoginComponent } from './login/login.component';
-import { MyAccountComponent } from './my-account/my-account.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InputTextModule } from 'primeng/inputtext';
+import { CreateAccountComponent } from './create-account/create-account.component';
+import { AccountComponent } from './account.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    MyAccountComponent,
-    ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    CreateAccountComponent,
+    AccountComponent,
   ],
   imports: [
     CommonModule,
@@ -25,7 +26,8 @@ import { InputTextModule } from 'primeng/inputtext';
     FormsModule,
     ToastrModule,
     FontAwesomeModule,
-    InputTextModule
-  ]
+    NgxMaskModule.forChild(),
+  ],
+  bootstrap: [AccountComponent]
 })
 export class AccountModule { }

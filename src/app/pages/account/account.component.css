@@ -7,6 +7,7 @@
     display: flex;
     align-items: stretch;
     justify-content: space-between;
+    flex-flow: wrap;
 }
 
 .login__bg {
@@ -17,6 +18,7 @@
     align-items: center;
     justify-content: center;
     flex-flow: column;
+    background-attachment: fixed;
 }
 
 .login__bg::after {
@@ -32,10 +34,11 @@
 .login__bg img {
     filter: drop-shadow(2px 4px 6px black);
     z-index: 1;
-    position: relative;
+    position: fixed;
     opacity: 0.6;
     max-width: 300px;
-    animation: loginBGLogo 1s;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 @keyframes loginBGLogo {
@@ -55,10 +58,12 @@
     display: flex;
     align-items: center;
     min-height: 100vh;
+    padding: 7vh 0;
 }
 
 .login__form-inner {
     min-height: 70vh;
+    width: 100%;
 }
 
 .login__form-inner img {
@@ -69,4 +74,16 @@
     display: flex;
     align-items: center;
     overflow: hidden;
+}
+
+
+@media (max-width: 800px) {
+    .login__bg {
+        display: none;
+    }
+    .login__bg img {
+        position: static;
+        top: 0;
+        transform: none;
+    }
 }
