@@ -21,6 +21,7 @@
 	--primary-dark: #146e8d;
 	--dark: #000;
 	--grey: #181818;
+	--red: #e81717;
 }
 
 * {
@@ -59,7 +60,9 @@ body {
 p {
 	margin: 0;
 }
-
+img {
+	max-width: 100%;
+}
 label:not(form label), h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 0;
 }
@@ -81,7 +84,7 @@ hr {
 }
 
 .page__header h3 {
-	color: var(--orange);
+	color: var(--primary);
 	font-weight: 800;
 	margin: 8px 0;
 	font-size: 22px;
@@ -116,7 +119,7 @@ hr {
 
 .text-danger,
 .text-red {
-	color: var(--orange) !important;
+	color: var(--red) !important;
 }
 
 .text-grey {
@@ -140,7 +143,7 @@ hr {
 }
 
 .flag-red {
-	background: var(--orange);
+	background: var(--red);
 	color: #fff;
 }
 
@@ -150,7 +153,7 @@ hr {
 }
 
 .flag-orange {
-	background: var(--orange);
+	background: var(--primary);
 	color: #fff;
 }
 
@@ -166,9 +169,9 @@ hr {
 
 
 .btn-primary {
-	background-color: var(--orange);
+	background-color: var(--primary);
 	color: #fff !important;
-	border-color: var(--orange);
+	border-color: var(--primary);
 	/* margin: 0 10px 0; */
 	font-size: 14px;
 	padding: 6px 12px;
@@ -187,8 +190,8 @@ hr {
 a.btn-primary:not([href]):hover,
 .btn-primary:hover {
 	color: #fff;
-	background-color: #e14b00;
-	border-color: #e14b00;
+	background-color: var(--primary-light);
+	border-color: var(--primary-light);
 }
 
 .btn-primary:not(:disabled):not(.disabled):not(.btn[disabled]).active,
@@ -200,36 +203,36 @@ a.btn-primary:not([href]):hover,
 .btn-primary.focus,
 .btn-primary:focus,
 a.btn-primary:not([href]):focus {
-	background-color: var(--orange);
-	border-color: var(--orange);
+	background-color: var(--primary);
+	border-color: var(--primary);
 	box-shadow: 0 0px 0 3px rgb(255 99 21 / 43%);
 	color: #fff;
 }
 
 .btn-primary.disabled, .btn-primary:disabled, .btn-primary[disabled] {
-	background-color: var(--orange);
-	border-color: var(--orange);
+	background-color: var(--primary);
+	border-color: var(--primary);
 	opacity: 0.8;
 }
 
 .btn-orange {
-	background-color: var(--orange);
+	background-color: var(--primary);
 	color: #fff;
 }
 
 a.btn-orange:not([href]):hover,
 .btn-orange:hover {
 	color: #fff;
-	background-color: #e14b00;
-	border-color: #e14b00;
+	background-color: var(--primary-light);
+	border-color: var(--primary-light);
 }
 
 
 a.btn-orange:not([href]):hover,
 .btn-orange:hover {
 	color: #fff;
-	background-color: #e14b00;
-	border-color: #e14b00;
+	background-color: var(--primary-light);
+	border-color: var(--primary-light);
 }
 
 .btn-orange:not(:disabled):not(.disabled):not(.btn[disabled]).active,
@@ -241,15 +244,15 @@ a.btn-orange:not([href]):hover,
 .btn-orange.focus,
 .btn-orange:focus,
 a.btn-orange:not([href]):focus {
-	background-color: var(--orange);
-	border-color: var(--orange);
+	background-color: var(--primary);
+	border-color: var(--primary);
 	box-shadow: 0 0px 0 3px rgb(255 99 21 / 43%);
 	color: #fff;
 }
 
 .btn-orange.disabled, .btn-orange:disabled, .btn-orange[disabled] {
-	background-color: var(--orange);
-	border-color: var(--orange);
+	background-color: var(--primary);
+	border-color: var(--primary);
 	opacity: 0.8;
 }
 
@@ -456,7 +459,7 @@ a.btn-pink.disabled:not([href]) {
 }
 
 .text-orange {
-	color: var(--orange);
+	color: var(--primary);
 }
 
 .text-pink {
@@ -517,8 +520,8 @@ a.btn-pink.disabled:not([href]) {
 
 .btn-secondary, .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle, .btn-secondary:not([href]) {
 	background: none;
-	border: 1px var(--orange) solid;
-	color: var(--orange) !important;
+	border: 1px var(--primary) solid;
+	color: var(--primary) !important;
 	font-weight: 600;
 	font-size: 14px;
 	padding: 6px 12px;
@@ -526,13 +529,13 @@ a.btn-pink.disabled:not([href]) {
 
 .btn-check:focus+.btn-secondary, .btn-secondary:focus, .btn-check:checked+.btn-secondary:focus, .btn-check:active+.btn-secondary:focus, .btn-secondary:active:focus, .btn-secondary.active:focus, .btn-secondary:hover, .show>.btn-secondary.dropdown-toggle:focus {
 	background-color: transparent;
-	color: var(--orange);
+	color: var(--primary);
 	box-shadow: 0 0 0 2px rgb(204 0 0 / 19%);
-	border-color: var(--orange);
+	border-color: var(--primary);
 }
 
 .link {
-	color: var(--orange);
+	color: var(--primary);
 	font-weight: 600;
 	text-decoration: underline;
 }
@@ -596,10 +599,24 @@ form .form-control.ng-touched.ng-valid:not(.novalidate .form-control.ng-touched.
 	border-color: #5cb15c;
 }
 
-form .form-control.ng-touched.ng-invalid:not([novalidate] .form-control.ng-touched.ng-invalid),
-form .form-control.ng-touched.ng-invalid:not(.novalidate .form-control.ng-touched.ng-invalid) {
+.form-control.ng-touched.ng-invalid:not([novalidate] .form-control.ng-touched.ng-invalid),
+.form-control.ng-touched.ng-invalid:not(.novalidate .form-control.ng-touched.ng-invalid) {
 	background: #fff5f5;
-	border-color: var(--orange);
+	border-color: var(--red);
+	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+	background-repeat: no-repeat;
+	background-position: right calc(14px) center;
+	background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+	
+}
+
+.form-floating>label {
+	width: 100%;
+    padding: 1rem 20px;
+}
+
+.form-floating > .form-control {
+    padding: 1rem 20px;
 }
 
 .btn-link {
@@ -631,12 +648,12 @@ form .form-control.ng-touched.ng-invalid:not(.novalidate .form-control.ng-touche
 }
 
 .page-item.number-item.active {
-	background: var(--orange);
+	background: var(--primary);
 }
 
 .page-item.active .page-link {
-	background: var(--orange);
-	border-color: var(--orange);
+	background: var(--primary);
+	border-color: var(--primary);
 }
 
 .page-link {
@@ -709,7 +726,7 @@ form .form-control.ng-touched.ng-invalid:not(.novalidate .form-control.ng-touche
 }
 
 .btn-secondary .spinner-border {
-	border: .25em solid var(--orange);
+	border: .25em solid var(--primary);
 	border-right-color: transparent;
 }
 
@@ -723,8 +740,8 @@ form .form-control.ng-touched.ng-invalid:not(.novalidate .form-control.ng-touche
 }
 
 .input-group-text.orange {
-	background: var(--orange);
-	border-color: var(--orange);
+	background: var(--primary);
+	border-color: var(--primary);
 	color: #fff;
 }
 
@@ -735,8 +752,8 @@ form .form-control.ng-touched.ng-invalid:not(.novalidate .form-control.ng-touche
 }
 
 .input-group-text.red {
-	background: var(--orange);
-	border-color: var(--orange);
+	background: var(--red);
+	border-color: var(--red);
 	color: #fff;
 }
 
@@ -748,8 +765,8 @@ form .form-control.ng-touched.ng-invalid:not(.novalidate .form-control.ng-touche
 
 .btn-success, .btn-success:not([href]) {
 	color: #fff;
-	background-color: var(--orange);
-	border-color: var(--orange);
+	background-color: var(--primary);
+	border-color: var(--primary);
 }
 
 .btn-success:hover {
@@ -834,14 +851,14 @@ a.btn:not([href]) {
 }
 
 .input-group-text.orange {
-	background-color: var(--orange);
-	border-color: var(--orange);
+	background-color: var(--primary);
+	border-color: var(--primary);
 	color: #fff;
 }
 
 .input-group-text.danger {
-	background-color: rgba(185, 15, 15, 0.829);
-	border-color: rgba(185, 15, 15, 0.829);
+	background-color: var(--red);
+	border-color: var(--red);
 	color: #fff;
 }
 
@@ -866,7 +883,7 @@ a.btn:not([href]) {
 
 .inputFile .inputFile-button {
 	margin: 0;
-	background-color: var(--orange);
+	background-color: var(--primary);
 	padding: 5px 0;
 	height: 35px;
 	color: #ffff;
@@ -963,7 +980,7 @@ a.btn:not([href]) {
 	width: 35px;
 	height: 35px;
 	border-width: 4px;
-	border-color: var(--orange);
+	border-color: var(--primary);
 	border-right-color: transparent;
 }
 
@@ -1057,7 +1074,7 @@ tbody tr.alert-dark:nth-of-type(even) td {
 }
 
 .alert-danger .alert-header {
-	color: #cc0000;
+	color: var(--red);
 	font-weight: 800;
 }
 
@@ -1067,7 +1084,7 @@ tbody tr.alert-dark:nth-of-type(even) td {
 }
 
 .alert-danger p {
-	color: #ab0404;
+	color: var(--red);
 }
 
 .w-0 {
@@ -1100,7 +1117,7 @@ tbody tr.alert-dark:nth-of-type(even) td {
 }
 
 .toast-warning {
-	background-color: var(--orange);
+	background-color: var(--primary);
 }
 
 .form-control:disabled,
@@ -1210,7 +1227,7 @@ tbody tr.alert-dark:nth-of-type(even) td {
 }
 
 .btn-gradient {
-	background: linear-gradient(45deg, var(--purple), var(--pink), var(--orange));
+	background: linear-gradient(45deg, var(--purple), var(--pink), var(--primary));
 	border: none;
 	border-radius: 0;
 	color: #fff;
