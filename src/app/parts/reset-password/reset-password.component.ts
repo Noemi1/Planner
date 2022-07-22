@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Loading } from 'src/app/helpers/loading';
-import { ModalOpen } from 'src/app/helpers/modal-open';
+import { Loading } from 'src/app/utils/loading';
+import { ModalOpen } from 'src/app/utils/modal-open';
 
 @Component({
   selector: 'app-reset-password',

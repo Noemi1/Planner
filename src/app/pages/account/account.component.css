@@ -11,14 +11,15 @@
 }
 
 .login__bg {
-    background-size: cover;
-    background-position: right;
+    background-size: auto 100vh;
+    background-position: right top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-flow: column;
-    background-attachment: fixed;
 }
 
 .login__bg::after {

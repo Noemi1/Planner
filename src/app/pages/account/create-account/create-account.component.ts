@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
-import { Loading } from 'src/app/helpers/loading';
+import { Loading } from 'src/app/utils/loading';
 
 @Component({
   selector: 'app-create-account',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faChartColumn, faChartLine, faHome, faRotate } from '@fortawesome/free-solid-svg-icons';
-import { ActionsService } from 'src/app/helpers/actions';
-import { ModoEscuro } from 'src/app/helpers/modo-escuro';
+import { ActionsService } from 'src/app/utils/actions';
+import { ModoEscuro } from 'src/app/utils/modo-escuro';
 
 @Component({
   selector: 'app-actions',

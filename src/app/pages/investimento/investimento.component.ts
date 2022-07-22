@@ -1,48 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { Colors } from 'src/app/helpers/colors.enum';
-import { ModoEscuro } from 'src/app/helpers/modo-escuro';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { faArrowLeft, faArrowRight, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { PlanejamentoInvestimento } from 'src/app/models/planejamento-investimento.model';
+import { PlanejamentoProduto } from 'src/app/models/planejamento-produto.model';
+import { InvestimentoService } from 'src/app/services/investimento.service';
+import { PDFService } from 'src/app/services/pdf.service';
+import { Colors } from 'src/app/utils/colors.enum';
+import { Crypto } from 'src/app/utils/crypto';
+import { arrowDown, arrowUp } from 'src/app/utils/format';
+import { ModoEscuro } from 'src/app/utils/modo-escuro';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-investimento',
+  templateUrl: './investimento.component.html',
+  styleUrls: ['./investimento.component.css']
 })
-export class HomeComponent implements OnInit {
+export class InvestimentoComponent implements OnInit {
 
   faArrowRight = faArrowRight;
+  faTrash = faTrash;
+	loading = false;
 
   calculos = [
     { id: 0, baixissimo: 50, baixo: 50, moderado: 50, arrojado: 50, superArrojado: 50, hedge: 50, total: 0, tipo: 'Sugestão' },
     { id: 1, baixissimo: 50, baixo: 50, moderado: 50, arrojado: 50, superArrojado: 50, hedge: 50, total: 0, tipo: 'Plano' },
   ];
 
-  investimento = [
-    { tipo: 'Poupança', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Tesouro', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'RF (CDB/LCI/LCA)', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Previdência (VGBL)', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Debêntures/COE', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Fundo RF', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'FII', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'FIM/FIC e afins', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'FIA', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Ações', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Imóveis (Aluguel)', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Dólar/Ouro', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Criptoativos', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Outros', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Reserva de Emergência', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'C.A. Conservador', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'C.A. Moderado', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'C.A. Arrojado', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Mesa Proprietária (You Capital)', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Private Equity Imobiliário', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Private Equity Gado', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Private Equity Usina Solar', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-    { tipo: 'Previdência em Dólar', id: 0, rentabilidade: 0, tributacao: 0, rentabilidadeLiquida: 0, montanteAtual: 0, montanteSugerido: 0, planoAcao: 0 },
-
-  ];
+  investimentos: PlanejamentoInvestimento[] = [];
+  produtos: PlanejamentoProduto[] = [];
 
   ativos = {
     imoveis: 0,
@@ -127,11 +112,19 @@ export class HomeComponent implements OnInit {
   capitalSegurado: any;
   capitalSegurado_options: any;
   
+
   constructor(
     private modoEscuro: ModoEscuro,
+    private pdfService: PDFService,
+    private investimentoService: InvestimentoService,
+    private crypto: Crypto,
+    private router: Router
   ) {
     this.dadosSeguroVida.imc = this.calcularIMC(this.dadosSeguroVida);
     this.modoEscuro.getAtivado().subscribe(res => this.modoEscuroAtivado = res);
+
+    this.investimentoService.list_Planejamento_Investimento.subscribe(res => this.investimentos = res);
+    this.investimentoService.list_Planejamento_Produto.subscribe(res => this.produtos = res);
     this.patrimonioPorIdade = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
@@ -211,12 +204,20 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   calcularIMC(obj: any) {
     var imc = obj.peso / (obj.altura ^ 2);
     return imc;
   }
-
-
-
+  deleteInvestimento(id: number) {
+    this.router.navigate(['delete-investimento', this.crypto.encrypt(id)])
+  }
+  deleteProduto(id: number) {
+    this.router.navigate(['delete-produto', this.crypto.encrypt(id)])
+  }
+  arrowUp(value: number) {
+		return arrowUp(value)
+	}
+	arrowDown(value: number, allowNegative: boolean = false) {
+		return arrowDown(value, allowNegative)
+	}
 }

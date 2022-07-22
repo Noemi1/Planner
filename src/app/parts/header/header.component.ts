@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faIdCard, faKey, faSignOut } from '@fortawesome/free-solid-svg-icons';
-import { Header } from 'src/app/helpers/header';
-import { ModoEscuro } from 'src/app/helpers/modo-escuro';
+import { Header } from 'src/app/utils/header';
+import { ModoEscuro } from 'src/app/utils/modo-escuro';
 import { AccountService } from 'src/app/services/account.service';
 
 @Component({

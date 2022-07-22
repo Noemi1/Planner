@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModoEscuro } from 'src/app/helpers/modo-escuro';
+import { ModoEscuro } from 'src/app/utils/modo-escuro';
 
 @Component({
   selector: 'app-footer',

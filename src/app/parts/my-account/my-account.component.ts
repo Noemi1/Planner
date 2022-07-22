@@ -3,8 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faKey } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
-import { Loading } from 'src/app/helpers/loading';
-import { ModalOpen } from 'src/app/helpers/modal-open';
+import { Loading } from 'src/app/utils/loading';
+import { ModalOpen } from 'src/app/utils/modal-open';
 
 @Component({
   selector: 'app-my-account',
