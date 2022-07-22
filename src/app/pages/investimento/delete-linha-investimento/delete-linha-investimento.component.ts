@@ -29,14 +29,14 @@ export class DeleteLinhaInvestimentoComponent implements OnInit {
   ) {
     this.modal.getOpen().subscribe(res => this.modalOpen = res);
 
-    if (this.route.snapshot.queryParams['id']) {
-      this.objeto.id = this.crypto.decrypt(this.route.snapshot.queryParams['id']);
+    if (this.route.snapshot.params['id']) {
+      this.objeto.id = this.crypto.decrypt(this.route.snapshot.params['id']);
       var obj = this.investimentoService.list_Planejamento_Investimento.value.find(x => x.id == this.objeto.id);
       if (!obj) {
         this.voltar();
         this.toastr.error('Não é possível realizar essa operação');
       } else {
-        this.objeto == obj;
+        this.objeto = obj;
       }
     } else {
       this.toastr.error('Não é possível realizar essa operação');

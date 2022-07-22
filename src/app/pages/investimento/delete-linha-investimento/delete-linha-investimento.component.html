@@ -1,12 +1,12 @@
 <div class="modal" [class.active]="modalOpen">
     <div class="modal__bg" (click)="voltar()"></div>
-    <div class="modal__inner" style="max-width: 700px;">
+    <div class="modal__inner" style="max-width: 500px;">
       <div class="modal__content">
         <div class="modal__header modal__header--delete">
           <div class="">
             <h3 class="text-orange">Excluir linha</h3>
             <p>Tem certeza que deseja excluir? Essa ação só será concluida ao salvar os dados.</p>
-            <p><strong>OBS.:</strong>Após salvar, não será possivel recuperar o registro.</p>
+            <p><strong>OBS.:</strong> Após salvar, não será possivel recuperar o registro.</p>
           </div>
           <a (click)="voltar()" class="modal__header-close btn-close">
             <span></span>

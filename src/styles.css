@@ -203,8 +203,8 @@ a.btn-primary:not([href]):hover,
 a.btn-primary:not([href]):focus {
 	background-color: var(--primary);
 	border-color: var(--primary);
-	box-shadow: 0 0px 0 3px rgb(255 99 21 / 43%);
-	color: #fff;
+	box-shadow: 0 0px 0 3px rgb(60 134 160 / 29%);
+    color: #fff;
 }
 
 .btn-primary.disabled,
@@ -467,11 +467,11 @@ a.btn-pink.disabled:not([href]) {
 	font-weight: 900;
 }
 
-.modal__header--delete .btn-close {
+/* .modal__header--delete .btn-close {
 	top: 50%;
 	transform: translateY(-50%);
 	right: 1vw;
-}
+} */
 
 .text-orange {
 	color: var(--primary);

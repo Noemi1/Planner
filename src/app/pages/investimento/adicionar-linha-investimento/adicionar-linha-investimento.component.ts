@@ -36,6 +36,7 @@ export class AdicionarLinhaInvestimentoComponent implements OnInit {
 		});
 
 		this.investimentoService.list_Investimento.subscribe(res => {
+			res.sort((x, y) => x.id - y.id);
 			this.investimentos = res;
 		})
 

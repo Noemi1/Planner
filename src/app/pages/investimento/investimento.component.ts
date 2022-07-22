@@ -19,7 +19,7 @@ export class InvestimentoComponent implements OnInit {
 
   faArrowRight = faArrowRight;
   faTrash = faTrash;
-	loading = false;
+  loading = false;
 
   calculos = [
     { id: 0, baixissimo: 50, baixo: 50, moderado: 50, arrojado: 50, superArrojado: 50, hedge: 50, total: 0, tipo: 'Sugestão' },
@@ -111,7 +111,7 @@ export class InvestimentoComponent implements OnInit {
 
   capitalSegurado: any;
   capitalSegurado_options: any;
-  
+
 
   constructor(
     private modoEscuro: ModoEscuro,
@@ -123,7 +123,10 @@ export class InvestimentoComponent implements OnInit {
     this.dadosSeguroVida.imc = this.calcularIMC(this.dadosSeguroVida);
     this.modoEscuro.getAtivado().subscribe(res => this.modoEscuroAtivado = res);
 
-    this.investimentoService.list_Planejamento_Investimento.subscribe(res => this.investimentos = res);
+    this.investimentoService.list_Planejamento_Investimento.subscribe(res => {
+      this.investimentos = res;
+      console.log(res);
+    });
     this.investimentoService.list_Planejamento_Produto.subscribe(res => this.produtos = res);
     this.patrimonioPorIdade = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -144,25 +147,25 @@ export class InvestimentoComponent implements OnInit {
     this.patrimonioPorIdade_options = {
       plugins: {
         title: {
-            display: true,
-            text: 'Patrimônio por Idade',
-            font: {
-              size: 26
-            },
-            color: Colors.primary
+          display: true,
+          text: 'Patrimônio por Idade',
+          font: {
+            size: 26
+          },
+          color: Colors.primary
         },
         subtitle: {
-            display: true,
-            text: 'Planejado x Realidade Atual',
-            font: {
-              size: 22
-            },
-            color: Colors.grey
+          display: true,
+          text: 'Planejado x Realidade Atual',
+          font: {
+            size: 22
+          },
+          color: Colors.grey
         },
         legend: {
           position: 'top'
         }
-    },
+      },
     };
     this.capitalSegurado = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -188,17 +191,17 @@ export class InvestimentoComponent implements OnInit {
     this.capitalSegurado_options = {
       plugins: {
         title: {
-            display: true,
-            text: 'Capital Segurado x Evolução Patrimonial',
-            font: {
-              size: 26
-            },
-            color: Colors.primary
+          display: true,
+          text: 'Capital Segurado x Evolução Patrimonial',
+          font: {
+            size: 26
+          },
+          color: Colors.primary
         },
         legend: {
           position: 'top'
         }
-    },
+      },
     };
   }
 
@@ -209,15 +212,15 @@ export class InvestimentoComponent implements OnInit {
     return imc;
   }
   deleteInvestimento(id: number) {
-    this.router.navigate(['delete-investimento', this.crypto.encrypt(id)])
+    this.router.navigate(['investimento', 'remover-investimento', this.crypto.encrypt(id)])
   }
   deleteProduto(id: number) {
-    this.router.navigate(['delete-produto', this.crypto.encrypt(id)])
+    this.router.navigate(['investimento', 'remover-produto', this.crypto.encrypt(id)])
   }
   arrowUp(value: number) {
-		return arrowUp(value)
-	}
-	arrowDown(value: number, allowNegative: boolean = false) {
-		return arrowDown(value, allowNegative)
-	}
+    return arrowUp(value)
+  }
+  arrowDown(value: number, allowNegative: boolean = false) {
+    return arrowDown(value, allowNegative)
+  }
 }

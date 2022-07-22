@@ -38,6 +38,7 @@ export class AdicionarLinhaProdutoComponent implements OnInit {
 		});
 
 		this.produtoService.list_Produto.subscribe(res => {
+			res.sort((x, y) => x.id - y.id);
 			this.produtos = res;
 		})
 

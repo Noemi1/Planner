@@ -62,25 +62,33 @@ export class InvestimentoService {
             investimento: request.investimento,
             tributacao: request.tributacao,
         }
+        console.log(planejamentoInvestimento)
         this.list_Planejamento_Investimento.value.push(planejamentoInvestimento)
         this.list_Planejamento_Investimento.next(this.list_Planejamento_Investimento.value);
+        console.log(this.list_Planejamento_Investimento.value )
         var index = this.list_Investimento.value.map(x => x.id).indexOf(request.investimento.id);
         if (index != -1) {
             this.list_Investimento.value.splice(index, 1);
             this.list_Investimento.next(this.list_Investimento.value);
         }
+        console.log(this.list_Planejamento_Investimento.value )
+        return;
     }
 
     deleteInvestimento(model: PlanejamentoInvestimento) {
-        console.log(this.list_Planejamento_Investimento.value)
-        var index = this.list_Planejamento_Investimento.value.findIndex(x => {
-            console.log(x, model, x == model)
-            return x == model
-        });
+        console.log(model)
+        var index = this.list_Planejamento_Investimento.value.findIndex(x => x.id == model.id);
         if (index != -1) {
             this.list_Planejamento_Investimento.value.splice(index, 1);
-            console.log(this.list_Planejamento_Investimento.value)
             this.list_Planejamento_Investimento.next(this.list_Planejamento_Investimento.value);
+        }
+        var index = this.list_Investimento.value.findIndex(x => x.id == model.investimento.id);
+        console.log(index)
+        if (index == -1) {
+            this.list_Investimento.value.push(model.investimento);
+            console.log(this.list_Investimento.value);
+            this.list_Investimento.next(this.list_Investimento.value);
+            console.log(this.list_Investimento.value);
         }
         return this.list_Planejamento_Investimento;
     }
@@ -114,5 +122,23 @@ export class InvestimentoService {
             this.list_Produto.next(this.list_Produto.value);
         }
     }
+    
+    deleteProduto(model: PlanejamentoProduto) {
+        var index = this.list_Planejamento_Produto.value.findIndex(x => x.id == model.id);
+        if (index != -1) {
+            this.list_Planejamento_Produto.value.splice(index, 1);
+            this.list_Planejamento_Produto.next(this.list_Planejamento_Produto.value);
+        }
+        var index = this.list_Produto.value.findIndex(x => x.id == model.produto.id);
+        console.log(index)
+        if (index == -1) {
+            this.list_Produto.value.push(model.produto);
+            console.log(this.list_Produto.value)
+            this.list_Produto.next(this.list_Produto.value);
+            console.log(this.list_Produto.value)
+        }
+        return this.list_Planejamento_Produto;
+    }
+
 
 }
