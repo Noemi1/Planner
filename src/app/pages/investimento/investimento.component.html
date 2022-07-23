@@ -8,43 +8,94 @@
                         <div class="form-row">
                             <div class="form-group col-lg-9 col-md-9 col-sm-9 col-9">
                                 <label for="nome">Nome Completo:</label>
-                                <input type="text" class="form-control" id="nome" name="nome" #nome>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="nome" name="nome" #nome="ngModel"
+                                        [(ngModel)]="cliente.nome" required [ngbPopover]="campoObrigatorio"
+                                        [disablePopover]="nome.errors == null" popoverClass="popover-danger"
+                                        triggers="mouseenter:mouseleave">
+                                </div>
                             </div>
                             <div class="form-group col-lg-3 col-md-3 col-sm-3 col-3">
                                 <label for="idade">Idade:</label>
-                                <input type="text" id="idade" name="idade" class="form-control">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" mask="0*" id="idade" name="idade"
+                                        #idade="ngModel" [(ngModel)]="cliente.idade" required
+                                        [ngbPopover]="campoObrigatorio" [disablePopover]="idade.errors == null"
+                                        popoverClass="popover-danger" triggers="mouseenter:mouseleave"
+                                        placeholder="0"
+                                        (keyup.arrowup)="cliente.despesa = arrowUp(despesa.value)"
+                                        (keyup.arrowdown)="cliente.despesa = arrowDown(despesa.value)">
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6">
-                                <label for="receitas">Receitas:</label>
+                                <label for="receita">Receitas:</label>
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
+                                    <div class="input-group-prepend"
+                                        [class.invalid]="receita.touched && receita.errors"
+                                        [class.valid]="receita.touched && !receita.errors">
                                         <div class="input-group-text">R$</div>
                                     </div>
-                                    <input type="text" class="form-control" id="receitas" name="receitas"
-                                        placeholder="00,00">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="receita" name="receita"
+                                            #receita="ngModel" [(ngModel)]="cliente.receita" mask="separator.5"
+                                            [dropSpecialCharacters]="false" thousandSeparator="."
+                                            [allowNegativeNumbers]="false"
+                                            placeholder="00,00"
+                                            (keyup.arrowup)="cliente.receita = arrowUp(receita.value)"
+                                            (keyup.arrowdown)="cliente.receita = arrowDown(receita.value)" required
+                                            [ngbPopover]="campoObrigatorio" [disablePopover]="idade.errors == null"
+                                            popoverClass="popover-danger" triggers="mouseenter:mouseleave">
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6">
-                                <label for="despesas">Despesas:</label>
+                                <label for="despesa">Despesas:</label>
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
+                                    <div class="input-group-prepend"
+                                        [class.invalid]="despesa.errors && despesa.touched"
+                                        [class.valid]="despesa.errors && !despesa.touched">
                                         <div class="input-group-text">R$</div>
                                     </div>
-                                    <input type="text" class="form-control" id="despesas" name="despesas"
-                                        placeholder="00,00">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="despesa" name="despesa"
+                                            #despesa="ngModel" [(ngModel)]="cliente.despesa" mask="separator.5"
+                                            [dropSpecialCharacters]="false" thousandSeparator="."
+                                            [allowNegativeNumbers]="false"
+                                            placeholder="00,00"
+                                            (keyup.arrowup)="cliente.despesa = arrowUp(despesa.value)"
+                                            (keyup.arrowdown)="cliente.despesa = arrowDown(despesa.value)" required
+                                            [ngbPopover]="campoObrigatorio" popoverClass="popover-danger"
+                                            [disablePopover]="despesa.errors == null" triggers="mouseenter:mouseleave">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-lg6 col-md-6 col-sm-12 col-12">
-                                <label for="">Selic/DI</label>
-                                <input type="text" class="form-control" placeholder="00,00">
+                                <label for="taxaSelic">Selic/DI:</label>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="taxaSelic" name="taxaSelic"
+                                        #taxaSelic="ngModel" [(ngModel)]="planejamento.taxaSelic" mask="separator.5"
+                                        [dropSpecialCharacters]="false" thousandSeparator="." suffix="%"
+                                        (keyup.arrowup)="planejamento.taxaSelic = arrowUp(taxaSelic.value)"
+                                        (keyup.arrowdown)="planejamento.taxaSelic = arrowDown(taxaSelic.value, true)"
+                                        required [ngbPopover]="campoObrigatorio" popoverClass="popover-danger"
+                                        [disablePopover]="taxaSelic.errors == null" triggers="mouseenter:mouseleave">
+                                </div>
                             </div>
                             <div class="form-group col-lg6 col-md-6 col-sm-12 col-12">
-                                <label for="">IPCA Médio</label>
-                                <input type="text" class="form-control" placeholder="00,00">
+                                <label for="taxaIPCA">IPCA Médio:</label>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="taxaIPCA" name="taxaIPCA"
+                                        #taxaIPCA="ngModel" [(ngModel)]="planejamento.taxaIPCA" mask="separator.5"
+                                        [dropSpecialCharacters]="false" thousandSeparator="." suffix="%"
+                                        (keyup.arrowup)="planejamento.taxaIPCA = arrowUp(taxaIPCA.value)"
+                                        (keyup.arrowdown)="planejamento.taxaIPCA = arrowDown(taxaIPCA.value, true)"
+                                        required [ngbPopover]="campoObrigatorio" popoverClass="popover-danger"
+                                        [disablePopover]="taxaIPCA.errors == null" triggers="mouseenter:mouseleave">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -52,75 +103,121 @@
                 <div class="col-lg-7 col-md-7 col-sm-12 col-12 px-lg-1 px-md-0 px-sm-0 mb-md-2 mb-sm-2">
                     <div class="home__container">
                         <div class="form-row">
-                            <div class="form-group col-lg-7 col-md-6 col-sm-4 col-8">
-                                <label for="perfilInvestidor">Perfil de Investidor:</label>
-                                <select name="perfilInvestidor" id="perfilInvestidor" name="perfilInvestidor"
-                                    #perfilInvestidorSelect class="form-control">
-                                    <option [value]="item.id" *ngFor="let item of perfilInvestidor">{{ item.nome }}
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="form-group col-lg-5 col-md-5 col-sm-4 col-4">
-                                <label for="">Capacidade de Risco:</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">R$</div>
-                                    </div>
-                                    <input type="text" class="form-control" id="" name="" placeholder="00,00">
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12">
+                                <label for="perfilInvestidor_Id">Perfil de Investidor:</label>
+                                <div class="form-floating">
+                                    <select class="form-control" name="perfilInvestidor_Id" id="perfilInvestidor_Id"
+                                        name="perfilInvestidor_Id" #perfilInvestidor_Id="ngModel"
+                                        [(ngModel)]="cliente.perfilInvestidor_Id" required
+                                        [ngbPopover]="campoObrigatorio" popoverClass="popover-danger"
+                                        [disablePopover]="perfilInvestidor_Id.errors == null"
+                                        triggers="mouseenter:mouseleave">
+                                        <option [value]="item.id" *ngFor="let item of perfilInvestidor">{{
+                                            item.descricao }} </option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
-                        <br>
                         <div class="form-row">
-                            <div class=" col-lg-6 col-md-6 col-sm-12 col-12 px-0">
-                                <div class="form-container">
-                                    <div class="form-container-title font-weight-bold">Reserva de Emergência</div>
-                                    <div class="form-container-body">
-                                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6 pr-1">
-                                            <label for=""> Sugerida:</label>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text">R$</div>
-                                                </div>
-                                                <input type="text" class="form-control" id="" name=""
-                                                    placeholder="00,00">
+                            <div class="form-container">
+                                <div class="form-container-title font-weight-bold ml-2 mb-2">Capacidade de Risco</div>
+                                <div class="form-container-body">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 px-0">
+                                        <div class="form-container">
+                                            <div class="form-container-title font-weight-bold">Reserva de Emergência
                                             </div>
-                                        </div>
-                                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6 pr-0">
-                                            <label for=""> Planejada:</label>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text">R$</div>
+                                            <div class="form-container-body">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6 pr-1 mb-md-2">
+                                                    <label for="reservaSugerida"> Sugerida:</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend"
+                                                            [class.invalid]="reservaSugerida.errors && reservaSugerida.touched"
+                                                            [class.valid]="reservaSugerida.errors && !reservaSugerida.touched">
+                                                            <div class="input-group-text">R$</div>
+                                                        </div>
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="reservaSugerida" name="reservaSugerida"
+                                                                #reservaSugerida="ngModel" [(ngModel)]="risco.reservaSugerida" mask="separator.5"
+                                                                [dropSpecialCharacters]="false" thousandSeparator="."
+                                                                [allowNegativeNumbers]="false"
+                                                                placeholder="00,00"
+                                                                (keyup.arrowup)="risco.reservaSugerida = arrowUp(reservaSugerida.value)"
+                                                                (keyup.arrowdown)="risco.reservaSugerida = arrowDown(reservaSugerida.value)" required
+                                                                [ngbPopover]="campoObrigatorio" popoverClass="popover-danger"
+                                                                [disablePopover]="reservaSugerida.errors == null" triggers="mouseenter:mouseleave">
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <input type="text" class="form-control" id="" name=""
-                                                    placeholder="00,00">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6 pr-0 mb-md-2">
+                                                    <label for="reservaPlanejada"> Planejada:</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend"
+                                                            [class.invalid]="reservaPlanejada.errors && reservaPlanejada.touched"
+                                                            [class.valid]="reservaPlanejada.errors && !reservaPlanejada.touched">
+                                                            <div class="input-group-text">R$</div>
+                                                        </div>
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="reservaPlanejada" name="reservaPlanejada"
+                                                                #reservaPlanejada="ngModel" [(ngModel)]="risco.reservaPlanejada" mask="separator.5"
+                                                                [dropSpecialCharacters]="false" thousandSeparator="."
+                                                                [allowNegativeNumbers]="false"
+                                                                placeholder="00,00"
+                                                                (keyup.arrowup)="risco.reservaPlanejada = arrowUp(reservaPlanejada.value)"
+                                                                (keyup.arrowdown)="risco.reservaPlanejada = arrowDown(reservaPlanejada.value)" required
+                                                                [ngbPopover]="campoObrigatorio" popoverClass="popover-danger"
+                                                                [disablePopover]="reservaPlanejada.errors == null" triggers="mouseenter:mouseleave">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 pl-1">
-                                <div class="form-container">
-                                    <div class="form-container-title font-weight-bold">Risco</div>
-                                    <div class="form-container-body">
-                                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6 pr-1">
-                                            <label for=""> Assumido:</label>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text">R$</div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 pl-1 pr-0">
+                                        <div class="form-container">
+                                            <div class="form-container-title font-weight-bold">Risco</div>
+                                            <div class="form-container-body">
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6 pr-1 mb-md-2">
+                                                    <label for="riscoAssumido"> Assumido:</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend"
+                                                            [class.invalid]="riscoAssumido.errors && riscoAssumido.touched"
+                                                            [class.valid]="riscoAssumido.errors && !riscoAssumido.touched">
+                                                            <div class="input-group-text">R$</div>
+                                                        </div>
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="riscoAssumido" name="riscoAssumido"
+                                                                #riscoAssumido="ngModel" [(ngModel)]="risco.riscoAssumido" mask="separator.5"
+                                                                [dropSpecialCharacters]="false" thousandSeparator="."
+                                                                [allowNegativeNumbers]="false"
+                                                                placeholder="00,00"
+                                                                (keyup.arrowup)="risco.riscoAssumido = arrowUp(riscoAssumido.value)"
+                                                                (keyup.arrowdown)="risco.riscoAssumido = arrowDown(riscoAssumido.value)" required
+                                                                [ngbPopover]="campoObrigatorio" popoverClass="popover-danger"
+                                                                [disablePopover]="riscoAssumido.errors == null" triggers="mouseenter:mouseleave">
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <input type="text" class="form-control" id="" name=""
-                                                    placeholder="00,00">
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6 pr-0">
-                                            <label for=""> Tolerado:</label>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text">%</div>
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-6 pr-0 mb-md-2">
+                                                    <label for="riscoTolerado"> Tolerado:</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend"
+                                                            [class.invalid]="riscoTolerado.errors && riscoTolerado.touched"
+                                                            [class.valid]="riscoTolerado.errors && !riscoTolerado.touched">
+                                                            <div class="input-group-text">R$</div>
+                                                        </div>
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="riscoTolerado" name="riscoTolerado"
+                                                                #riscoTolerado="ngModel" [(ngModel)]="risco.riscoTolerado" mask="separator.5"
+                                                                [dropSpecialCharacters]="false" thousandSeparator="."
+                                                                [allowNegativeNumbers]="false"
+                                                                placeholder="00,00"
+                                                                (keyup.arrowup)="risco.riscoTolerado = arrowUp(riscoTolerado.value)"
+                                                                (keyup.arrowdown)="risco.riscoTolerado = arrowDown(riscoTolerado.value)" required
+                                                                [ngbPopover]="campoObrigatorio" popoverClass="popover-danger"
+                                                                [disablePopover]="riscoTolerado.errors == null" triggers="mouseenter:mouseleave">
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <input type="text" class="form-control" id="" name=""
-                                                    placeholder="00,00">
                                             </div>
                                         </div>
                                     </div>
@@ -202,11 +299,12 @@
                     </div>
                     <div class="form-container-baixo">
                         <p-table [value]="investimentos" [resizableColumns]="true" columnResizeMode="expand"
-                            class="table table-editable" >
+                            class="table table-editable">
                             <ng-template pTemplate="header" let-columns>
                                 <tr>
                                     <th class="text-right">
-                                        <a class="btn btn-table-header" [routerLink]="['adicionar-investimento']">Adicionar</a>
+                                        <a class="btn btn-table-header"
+                                            [routerLink]="['adicionar-investimento']">Adicionar</a>
                                     </th>
                                     <th pResizableColumn style="white-space: nowrap;">Rentabilidade</th>
                                     <th pResizableColumn style="white-space: nowrap;">Tributação</th>
@@ -220,54 +318,33 @@
                             <ng-template pTemplate="body" let-item>
                                 <tr>
                                     <td class="ui-resizable-column px-3 bg-light text-right"
-                                        style="white-space: nowrap;"><small><b>{{ item.investimento.descricao }}</b></small></td>
+                                        style="white-space: nowrap;"><small><b>{{ item.investimento.descricao
+                                                }}</b></small></td>
                                     <td class="ui-resizable-column">
-                                        <input type="text" 
-                                            class="form-control" 
-                                            id="rentabilidade" 
-                                            name="rentabilidade"
-                                            #rentabilidade="ngModel" 
-                                            [(ngModel)]="item.rentabilidade" 
-                                            mask="separator.5"
-                                            [dropSpecialCharacters]="false" 
-                                            thousandSeparator="." 
-                                            suffix="%"
+                                        <input type="text" class="form-control" id="rentabilidade" name="rentabilidade"
+                                            #rentabilidade="ngModel" [(ngModel)]="item.rentabilidade" mask="separator.5"
+                                            [dropSpecialCharacters]="false" thousandSeparator="." suffix="%"
                                             [allowNegativeNumbers]="true"
-                                            (keyup.arrowup)="item.rentabilidade = arrowUp(rentabilidade.value)" 
+                                            (keyup.arrowup)="item.rentabilidade = arrowUp(rentabilidade.value)"
                                             (keyup.arrowdown)="item.rentabilidade = arrowDown(rentabilidade.value, true)"
-                                            required
-                                            [ngbPopover]="popContent" 
-                                            triggers="mouseenter:mouseleave" >
+                                            required [ngbPopover]="setaUpDown" triggers="mouseenter:mouseleave">
                                     </td>
-                                    <td class="ui-resizable-column px-2" style="white-space: nowrap">
-                                      {{ item.tributacao.nome }}
-                                    </td>
-                                    <td class="ui-resizable-column px-2" style="white-space: nowrap">
-                                        R$ {{ item.rentabilidadeLiquida | mask : 'separator' : ',' }}
-                                    </td>
+                                    <td class="ui-resizable-column px-2" style="white-space: nowrap"> {{
+                                        item.tributacao.nome }} </td>
+                                    <td class="ui-resizable-column px-2" style="white-space: nowrap"> R$ {{
+                                        item.rentabilidadeLiquida | mask : 'separator' : ',' }} </td>
                                     <td class="ui-resizable-column">
-                                        <input type="text" 
-                                            class="form-control" 
-                                            id="montanteAtual" 
-                                            name="montanteAtual"
-                                            #montanteAtual="ngModel" 
-                                            [(ngModel)]="item.montanteAtual" 
-                                            mask="separator.5"
-                                            [dropSpecialCharacters]="false" 
-                                            thousandSeparator="." 
-                                            prefix="R$"
-                                            (keyup.arrowup)="item.montanteAtual = arrowUp(montanteAtual.value)" 
+                                        <input type="text" class="form-control" id="montanteAtual" name="montanteAtual"
+                                            #montanteAtual="ngModel" [(ngModel)]="item.montanteAtual" mask="separator.5"
+                                            [dropSpecialCharacters]="false" thousandSeparator="." prefix="R$"
+                                            (keyup.arrowup)="item.montanteAtual = arrowUp(montanteAtual.value)"
                                             (keyup.arrowdown)="item.montanteAtual = arrowDown(montanteAtual.value, true)"
-                                            required
-                                            [ngbPopover]="popContent" 
-                                            triggers="mouseenter:mouseleave">
+                                            required [ngbPopover]="setaUpDown" triggers="mouseenter:mouseleave">
                                     </td>
-                                    <td class="ui-resizable-column px-2" style="white-space: nowrap">
-                                        R$ {{ item.montanteSugerido | mask : 'separator' : ',' }}
-                                    </td>
-                                    <td class="ui-resizable-column px-2" style="white-space: nowrap">
-                                        R$ {{ item.planoSugerido | mask : 'separator' : ','}}
-                                    </td>
+                                    <td class="ui-resizable-column px-2" style="white-space: nowrap"> R$ {{
+                                        item.montanteSugerido | mask : 'separator' : ',' }} </td>
+                                    <td class="ui-resizable-column px-2" style="white-space: nowrap"> R$ {{
+                                        item.planoSugerido | mask : 'separator' : ','}} </td>
                                     <td class="td-actions">
                                         <a class="btn btn-trash" (click)="deleteInvestimento(item.id)">
                                             <fa-icon [icon]="faTrash"></fa-icon>
@@ -286,11 +363,12 @@
                     </div>
                     <div class="form-container-baixo">
                         <p-table [value]="produtos" [resizableColumns]="true" columnResizeMode="expand"
-                            class="table table-editable" >
+                            class="table table-editable">
                             <ng-template pTemplate="header" let-columns>
                                 <tr>
                                     <th class="text-right">
-                                        <a class="btn btn-table-header" [routerLink]="['adicionar-produto']">Adicionar</a>
+                                        <a class="btn btn-table-header"
+                                            [routerLink]="['adicionar-produto']">Adicionar</a>
                                     </th>
                                     <th pResizableColumn style="white-space: nowrap;">Rentabilidade</th>
                                     <th pResizableColumn style="white-space: nowrap;">Tributação</th>
@@ -304,54 +382,33 @@
                             <ng-template pTemplate="body" let-item>
                                 <tr>
                                     <td class="ui-resizable-column" class="px-3 bg-light text-right"
-                                        style="white-space: nowrap;"><small><b>{{ item.produto.descricao }}</b></small></td>
+                                        style="white-space: nowrap;"><small><b>{{ item.produto.descricao }}</b></small>
+                                    </td>
                                     <td class="ui-resizable-column">
-                                        <input type="text"
-                                            class="form-control"
-                                            id="rentabilidade"
-                                            name="rentabilidade"
-                                            #rentabilidade="ngModel"
-                                            [(ngModel)]="item.rentabilidade"
-                                            mask="separator.5"
-                                            [dropSpecialCharacters]="false"
-                                            thousandSeparator="."
-                                            suffix="%"
+                                        <input type="text" class="form-control" id="rentabilidade" name="rentabilidade"
+                                            #rentabilidade="ngModel" [(ngModel)]="item.rentabilidade" mask="separator.5"
+                                            [dropSpecialCharacters]="false" thousandSeparator="." suffix="%"
                                             [allowNegativeNumbers]="true"
-                                            (keyup.arrowup)="item.rentabilidade = arrowUp(rentabilidade.value)" 
+                                            (keyup.arrowup)="item.rentabilidade = arrowUp(rentabilidade.value)"
                                             (keyup.arrowdown)="item.rentabilidade = arrowDown(rentabilidade.value, true)"
-                                            required
-                                            [ngbPopover]="popContent" 
-                                            triggers="mouseenter:mouseleave">
+                                            required [ngbPopover]="setaUpDown" triggers="mouseenter:mouseleave">
                                     </td>
-                                    <td class="ui-resizable-column px-2" style="white-space: nowrap">
-                                      {{ item.tributacao.nome }}
-                                    </td>
-                                    <td class="ui-resizable-column px-2" style="white-space: nowrap">
-                                        R$ {{ item.rentabilidadeLiquida | mask : 'separator' : ',' }}
-                                    </td>
+                                    <td class="ui-resizable-column px-2" style="white-space: nowrap"> {{
+                                        item.tributacao.nome }} </td>
+                                    <td class="ui-resizable-column px-2" style="white-space: nowrap"> R$ {{
+                                        item.rentabilidadeLiquida | mask : 'separator' : ',' }} </td>
                                     <td class="ui-resizable-column">
-                                        <input type="text" 
-                                            class="form-control" 
-                                            id="montanteAtual" 
-                                            name="montanteAtual"
-                                            #montanteAtual="ngModel" 
-                                            [(ngModel)]="item.montanteAtual" 
-                                            mask="separator.5"
-                                            [dropSpecialCharacters]="false" 
-                                            thousandSeparator="." 
-                                            prefix="R$"
-                                            (keyup.arrowup)="item.montanteAtual = arrowUp(montanteAtual.value)" 
+                                        <input type="text" class="form-control" id="montanteAtual" name="montanteAtual"
+                                            #montanteAtual="ngModel" [(ngModel)]="item.montanteAtual" mask="separator.5"
+                                            [dropSpecialCharacters]="false" thousandSeparator="." prefix="R$"
+                                            (keyup.arrowup)="item.montanteAtual = arrowUp(montanteAtual.value)"
                                             (keyup.arrowdown)="item.montanteAtual = arrowDown(montanteAtual.value, true)"
-                                            required
-                                            [ngbPopover]="popContent" 
-                                            triggers="mouseenter:mouseleave">
+                                            required [ngbPopover]="setaUpDown" triggers="mouseenter:mouseleave">
                                     </td>
-                                    <td class="ui-resizable-column px-2" style="white-space: nowrap">
-                                        R$ {{ item.montanteSugerido | mask : 'separator' : ',' }}
-                                    </td>
-                                    <td class="ui-resizable-column px-2" style="white-space: nowrap">
-                                        R$ {{ item.planoSugerido | mask : 'separator' : ','}}
-                                    </td>
+                                    <td class="ui-resizable-column px-2" style="white-space: nowrap"> R$ {{
+                                        item.montanteSugerido | mask : 'separator' : ',' }} </td>
+                                    <td class="ui-resizable-column px-2" style="white-space: nowrap"> R$ {{
+                                        item.planoSugerido | mask : 'separator' : ','}} </td>
                                     <td class="td-actions">
                                         <a class="btn btn-trash" (click)="deleteProduto(item.id)">
                                             <fa-icon [icon]="faTrash"></fa-icon>
@@ -395,7 +452,8 @@
                             <tbody>
                                 <tr *ngFor="let item of carteira">
                                     <td class="px-3 bg-light text-right" style="white-space: nowrap;">
-                                        <small><b>{{item.tipo}}</b></small></td>
+                                        <small><b>{{item.tipo}}</b></small>
+                                    </td>
                                     <td>
                                         <input type="text" class="form-control" id="rentabilidadeAtual"
                                             name="rentabilidadeAtual" #rentabilidadeAtual="ngModel"
@@ -462,19 +520,19 @@
                     <tbody>
                         <tr>
                             <td class="bg-light px-3 text-right" style="white-space: nowrap;">
-                                <small><b>Idade</b></small></td>
-                            <td>
-                                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+                                <small><b>Idade</b></small>
                             </td>
                             <td>
-                                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="bg-light px-3 text-right" style="white-space: nowrap;"><small><b>Renda
-                                        Mensal</b></small></td>
-                            <td>
-                                <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+                               <div class="form-floating">
+                                <input type="text" class="form-control" id="idadeAposentadoria" name="idadeAposentadoria"
+                                #idadeAposentadoria="ngModel" [(ngModel)]="cliente.idadeAposentadoria" mask="0*"
+                                [allowNegativeNumbers]="false"
+                                placeholder="0" 
+                                (keyup.arrowup)="cliente.idadeAposentadoria = arrowUp(idadeAposentadoria.value)"
+                                (keyup.arrowdown)="cliente.idadeAposentadoria = arrowDown(idadeAposentadoria.value)" required
+                                [ngbPopover]="campoObrigatorio" popoverClass="popover-danger"
+                                [disablePopover]="idadeAposentadoria.errors == null" triggers="mouseenter:mouseleave">
+                               </div>
                             </td>
                             <td>
                                 <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
@@ -482,9 +540,41 @@
                         </tr>
                         <tr>
                             <td class="bg-light px-3 text-right" style="white-space: nowrap;">
-                                <small><b>Rentabilidade</b></small></td>
+                                <small><b>RendaMensal</b></small>
+                            </td>
+                            <td>
+                                <div class="form-floating">
+                                 <input type="text" class="form-control" id="rendaMensalAposentadoria" name="rendaMensalAposentadoria"
+                                 #rendaMensalAposentadoria="ngModel" [(ngModel)]="cliente.rendaMensalAposentadoria" mask="separator.5"
+                                 [dropSpecialCharacters]="false" thousandSeparator="." [prefix]="rendaMensalAposentadoria.value != '' ? 'R$ ' : ''"
+                                 [allowNegativeNumbers]="false"
+                                 placeholder="R$ 00,00"
+                                 (keyup.arrowup)="cliente.rendaMensalAposentadoria = arrowUp(rendaMensalAposentadoria.value)"
+                                 (keyup.arrowdown)="cliente.rendaMensalAposentadoria = arrowDown(rendaMensalAposentadoria.value)" required
+                                 [ngbPopover]="campoObrigatorio" popoverClass="popover-danger"
+                                 [disablePopover]="rendaMensalAposentadoria.errors == null" triggers="mouseenter:mouseleave">
+                                </div>
+                            </td>
                             <td>
                                 <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bg-light px-3 text-right" style="white-space: nowrap;">
+                                <small><b>Rentabilidade</b></small>
+                            </td>
+                            <td>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="rentabilidadeAposentadoria" name="rentabilidadeAposentadoria"
+                                    #rentabilidadeAposentadoria="ngModel" [(ngModel)]="cliente.rentabilidadeAposentadoria" mask="separator.5"
+                                    [dropSpecialCharacters]="false" thousandSeparator="."
+                                    [allowNegativeNumbers]="true"
+                                    placeholder="00,00%" suffix="%"
+                                    (keyup.arrowup)="cliente.rentabilidadeAposentadoria = arrowUp(rentabilidadeAposentadoria.value)"
+                                    (keyup.arrowdown)="cliente.rentabilidadeAposentadoria = arrowDown(rentabilidadeAposentadoria.value)" required
+                                    [ngbPopover]="campoObrigatorio" popoverClass="popover-danger"
+                                    [disablePopover]="rentabilidadeAposentadoria.errors == null" triggers="mouseenter:mouseleave">
+                                   </div>
                             </td>
                             <td>
                                 <input type="text" class="form-control" id="baixissimo" name="baixissimo" #baixissimo>
@@ -658,7 +748,8 @@
                     <tbody>
                         <tr>
                             <td class="bg-light px-3 text-right" style="white-space: nowrap;">
-                                <small><b>Imóveis</b></small></td>
+                                <small><b>Imóveis</b></small>
+                            </td>
                             <td>
                                 <input type="text" class="form-control" id="imoveis" name="imoveis" #imoveis="ngModel"
                                     [(ngModel)]="ativos.imoveis">
@@ -666,7 +757,8 @@
                         </tr>
                         <tr>
                             <td class="bg-light px-3 text-right" style="white-space: nowrap;">
-                                <small><b>Veículos</b></small></td>
+                                <small><b>Veículos</b></small>
+                            </td>
                             <td>
                                 <input type="text" class="form-control" id="veiculos" name="veiculos"
                                     #veiculos="ngModel" [(ngModel)]="ativos.veiculos">
@@ -682,7 +774,8 @@
                         </tr>
                         <tr>
                             <td class="bg-light px-3 text-right" style="white-space: nowrap;">
-                                <small><b>Investimentos</b></small></td>
+                                <small><b>Investimentos</b></small>
+                            </td>
                             <td>
                                 <input type="text" class="form-control" id="investimentos" name="investimentos"
                                     #investimentos="ngModel" [(ngModel)]="ativos.investimentos">
@@ -690,7 +783,8 @@
                         </tr>
                         <tr>
                             <td class="bg-light px-3 text-right" style="white-space: nowrap;">
-                                <small><b>Total</b></small></td>
+                                <small><b>Total</b></small>
+                            </td>
                             <td>
                                 <input type="text" class="form-control" id="total" name="total" #total="ngModel"
                                     [(ngModel)]="ativos.total">
@@ -715,7 +809,8 @@
                     <tbody>
                         <tr>
                             <td class="bg-light px-3 text-right" style="white-space: nowrap;">
-                                <small><b>Imóveis</b></small></td>
+                                <small><b>Imóveis</b></small>
+                            </td>
                             <td>
                                 <input type="text" class="form-control" id="imoveis" name="imoveis" #imoveis="ngModel"
                                     [(ngModel)]="passivos.imoveis">
@@ -723,7 +818,8 @@
                         </tr>
                         <tr>
                             <td class="bg-light px-3 text-right" style="white-space: nowrap;">
-                                <small><b>Veículos</b></small></td>
+                                <small><b>Veículos</b></small>
+                            </td>
                             <td>
                                 <input type="text" class="form-control" id="veiculos" name="veiculos"
                                     #veiculos="ngModel" [(ngModel)]="passivos.veiculos">
@@ -747,7 +843,8 @@
                         </tr>
                         <tr>
                             <td class="bg-light px-3 text-right" style="white-space: nowrap;">
-                                <small><b>Total</b></small></td>
+                                <small><b>Total</b></small>
+                            </td>
                             <td>
                                 <input type="text" class="form-control" id="total" name="total" #total="ngModel"
                                     [(ngModel)]="passivos.total">
@@ -875,7 +972,8 @@
                             </tr>
                             <tr>
                                 <td class="px-3 bg-light text-right" style="white-space: nowrap;">
-                                    <small><b>CPF</b></small></td>
+                                    <small><b>CPF</b></small>
+                                </td>
                                 <td colspan="2">
                                     <input type="text" class="form-control" id="cpf" name="cpf" #cpf="ngModel"
                                         [(ngModel)]="dadosSeguroVida.cpf">
@@ -883,7 +981,8 @@
                             </tr>
                             <tr>
                                 <td class="px-3 bg-light text-right" style="white-space: nowrap;">
-                                    <small><b>RG</b></small></td>
+                                    <small><b>RG</b></small>
+                                </td>
                                 <td colspan="2">
                                     <input type="text" class="form-control" id="rg" name="rg" #rg="ngModel"
                                         [(ngModel)]="dadosSeguroVida.rg">
@@ -891,7 +990,8 @@
                             </tr>
                             <tr>
                                 <td class="px-3 bg-light text-right" style="white-space: nowrap;">
-                                    <small><b>E-mail</b></small></td>
+                                    <small><b>E-mail</b></small>
+                                </td>
                                 <td colspan="2">
                                     <input type="email" class="form-control" id="email" name="email" #email="ngModel"
                                         [(ngModel)]="dadosSeguroVida.email">
@@ -906,6 +1006,9 @@
     <div class="d-flex flex-wrap"> FIM </div>
     <router-outlet></router-outlet>
 </div>
-<ng-template #popContent> 
-	Acione as seta para cima ou para baixo no teclado para mudar o valor
+<ng-template #setaUpDown>
+    <div class="py-3 px-4"> Acione a seta para cima ou para baixo no teclado para mudar o valor </div>
+</ng-template>
+<ng-template #campoObrigatorio>
+    <div class="py-3 px-4"> Esse campo é obrigatório </div>
 </ng-template>

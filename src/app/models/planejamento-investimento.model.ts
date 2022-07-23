@@ -15,8 +15,8 @@ export class PlanejamentoInvestimento {
 }
 
 export class PlanejamentoInvestimentoRequest {
-    rentabilidade: number = 0;
-    montanteAtual: number = 0;
+    rentabilidade: number = '' as unknown as number;
+    montanteAtual: number = '' as unknown as number;
     investimento: Investimento = new Investimento;
     tributacao: Tributacao = new Tributacao;
 }

@@ -15,8 +15,8 @@ export class PlanejamentoProduto {
 }
 
 export class PlanejamentoProdutoRequest {
-    rentabilidade: number = 0;
-    montanteAtual: number = 0;
+    rentabilidade: number = '' as unknown as number;
+    montanteAtual: number = '' as unknown as number;
     produto: Produto = new Produto;
     tributacao: Tributacao = new Tributacao;
 }

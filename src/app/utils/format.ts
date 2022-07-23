@@ -15,6 +15,7 @@ export function stringToDecimal(value: string) {
 }
 
 export function arrowUp(value: number) {
+    console.log(value)
     return value + 1;
 }
 

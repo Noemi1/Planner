@@ -1,8 +1,13 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { faArrowLeft, faArrowRight, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { CapacidadeRiscoTemp } from 'src/app/models/capacidadeRisco-temp.model';
+import { Cliente } from 'src/app/models/cliente.model';
+import { estadoCivil, EstadoCivil } from 'src/app/models/estadoCivil.model';
+import { PerfilInvestidor, perfilInvestidor } from 'src/app/models/perfilInvestidor.model';
 import { PlanejamentoInvestimento } from 'src/app/models/planejamento-investimento.model';
 import { PlanejamentoProduto } from 'src/app/models/planejamento-produto.model';
+import { Planejamento } from 'src/app/models/planejamento.model';
 import { InvestimentoService } from 'src/app/services/investimento.service';
 import { PDFService } from 'src/app/services/pdf.service';
 import { Colors } from 'src/app/utils/colors.enum';
@@ -15,7 +20,7 @@ import { ModoEscuro } from 'src/app/utils/modo-escuro';
   templateUrl: './investimento.component.html',
   styleUrls: ['./investimento.component.css']
 })
-export class InvestimentoComponent implements OnInit {
+export class InvestimentoComponent implements OnInit, AfterContentChecked {
 
   faArrowRight = faArrowRight;
   faTrash = faTrash;
@@ -28,6 +33,8 @@ export class InvestimentoComponent implements OnInit {
 
   investimentos: PlanejamentoInvestimento[] = [];
   produtos: PlanejamentoProduto[] = [];
+
+  risco: CapacidadeRiscoTemp = new CapacidadeRiscoTemp;
 
   ativos = {
     imoveis: 0,
@@ -83,13 +90,7 @@ export class InvestimentoComponent implements OnInit {
     email: '',
   }
 
-  estadoCivil = [
-    { id: 0, nome: 'Solteiro' },
-    { id: 1, nome: 'Casado' },
-    { id: 2, nome: 'Separado' },
-    { id: 3, nome: 'Divorciado' },
-    { id: 4, nome: 'Viúvo' },
-  ];
+  estadoCivil: EstadoCivil[] = estadoCivil;
 
   carteira = [
     { tipo: 'Atual', rentabilidadeAtual: 0, retornoAnual: 0, retornoMensal: 0, patrimonioMaximo: 0, tempo: 0, },
@@ -97,13 +98,10 @@ export class InvestimentoComponent implements OnInit {
     { tipo: 'Diferença', rentabilidadeAtual: 0, retornoAnual: 0, retornoMensal: 0, patrimonioMaximo: 0, tempo: 0, },
   ];
 
-  perfilInvestidor = [
-    { id: 0, nome: 'Super Conservador (até 20% do patrimônio em Risco)' },
-    { id: 1, nome: 'Conservador (de 20% à 30% do patrimônio em Risco)' },
-    { id: 2, nome: 'Moderado (de 30% à 50% do patrimônio em Risco)' },
-    { id: 3, nome: 'Arrojado (de 50% à 80% do patrimônio em Risco)' },
-    { id: 4, nome: 'Super Arrojado (100% do patrimônio em Risco)' },
-  ]
+  perfilInvestidor: PerfilInvestidor[] = perfilInvestidor;
+
+  cliente: Cliente = new Cliente;
+  planejamento: Planejamento = new Planejamento;
 
   modoEscuroAtivado = false;
   patrimonioPorIdade: any;
@@ -112,20 +110,19 @@ export class InvestimentoComponent implements OnInit {
   capitalSegurado: any;
   capitalSegurado_options: any;
 
-
   constructor(
     private modoEscuro: ModoEscuro,
     private pdfService: PDFService,
     private investimentoService: InvestimentoService,
     private crypto: Crypto,
-    private router: Router
+    private router: Router,
+    private cdref: ChangeDetectorRef
   ) {
     this.dadosSeguroVida.imc = this.calcularIMC(this.dadosSeguroVida);
     this.modoEscuro.getAtivado().subscribe(res => this.modoEscuroAtivado = res);
 
     this.investimentoService.list_Planejamento_Investimento.subscribe(res => {
       this.investimentos = res;
-      console.log(res);
     });
     this.investimentoService.list_Planejamento_Produto.subscribe(res => this.produtos = res);
     this.patrimonioPorIdade = {
@@ -206,6 +203,14 @@ export class InvestimentoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngAfterContentChecked() {
+  
+    // this.sampleViewModel.DataContext = this.DataContext;
+    // this.sampleViewModel.Position = this.Position;
+    this.cdref.detectChanges();
+  
   }
   calcularIMC(obj: any) {
     var imc = obj.peso / (obj.altura ^ 2);
