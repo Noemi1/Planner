@@ -1,9 +1,11 @@
 import { AfterContentChecked, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { faArrowLeft, faArrowRight, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { CapacidadeRiscoTemp } from 'src/app/models/capacidadeRisco-temp.model';
 import { Cliente } from 'src/app/models/cliente.model';
 import { estadoCivil, EstadoCivil } from 'src/app/models/estadoCivil.model';
+import { FluxosPontuais } from 'src/app/models/fluxosPontuais.model';
+import { PrincipaisObjetivos } from 'src/app/models/objetivos.model';
 import { PerfilInvestidor, perfilInvestidor } from 'src/app/models/perfilInvestidor.model';
 import { PlanejamentoInvestimento } from 'src/app/models/planejamento-investimento.model';
 import { PlanejamentoProduto } from 'src/app/models/planejamento-produto.model';
@@ -24,17 +26,13 @@ export class InvestimentoComponent implements OnInit, AfterContentChecked {
 
   faArrowRight = faArrowRight;
   faTrash = faTrash;
+  faPlus = faPlus;
   loading = false;
 
   calculos = [
     { id: 0, baixissimo: 50, baixo: 50, moderado: 50, arrojado: 50, superArrojado: 50, hedge: 50, total: 0, tipo: 'Sugestão' },
     { id: 1, baixissimo: 50, baixo: 50, moderado: 50, arrojado: 50, superArrojado: 50, hedge: 50, total: 0, tipo: 'Plano' },
   ];
-
-  investimentos: PlanejamentoInvestimento[] = [];
-  produtos: PlanejamentoProduto[] = [];
-
-  risco: CapacidadeRiscoTemp = new CapacidadeRiscoTemp;
 
   ativos = {
     imoveis: 0,
@@ -98,10 +96,16 @@ export class InvestimentoComponent implements OnInit, AfterContentChecked {
     { tipo: 'Diferença', rentabilidadeAtual: 0, retornoAnual: 0, retornoMensal: 0, patrimonioMaximo: 0, tempo: 0, },
   ];
 
-  perfilInvestidor: PerfilInvestidor[] = perfilInvestidor;
-
+  
   cliente: Cliente = new Cliente;
+  perfilInvestidor: PerfilInvestidor[] = perfilInvestidor;
   planejamento: Planejamento = new Planejamento;
+  principaisObjetivos: PrincipaisObjetivos[] = []
+  investimentos: PlanejamentoInvestimento[] = [];
+  produtos: PlanejamentoProduto[] = [];
+  risco: CapacidadeRiscoTemp = new CapacidadeRiscoTemp;
+  fluxosPontuais: FluxosPontuais[] = []
+
 
   modoEscuroAtivado = false;
   patrimonioPorIdade: any;
@@ -121,10 +125,11 @@ export class InvestimentoComponent implements OnInit, AfterContentChecked {
     this.dadosSeguroVida.imc = this.calcularIMC(this.dadosSeguroVida);
     this.modoEscuro.getAtivado().subscribe(res => this.modoEscuroAtivado = res);
 
-    this.investimentoService.list_Planejamento_Investimento.subscribe(res => {
-      this.investimentos = res;
-    });
+    this.investimentoService.list_Planejamento_Investimento.subscribe(res => this.investimentos = res);
     this.investimentoService.list_Planejamento_Produto.subscribe(res => this.produtos = res);
+    this.investimentoService.list_PrincipaisObjetivos.subscribe(res => this.principaisObjetivos = res);
+    this.investimentoService.list_FluxosPontuais.subscribe(res => this.fluxosPontuais = res);
+
     this.patrimonioPorIdade = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
@@ -222,6 +227,15 @@ export class InvestimentoComponent implements OnInit, AfterContentChecked {
   deleteProduto(id: number) {
     this.router.navigate(['investimento', 'remover-produto', this.crypto.encrypt(id)])
   }
+
+  deleteObjetivo(id: number) {
+    this.router.navigate(['investimento', 'remover-objetivo', this.crypto.encrypt(id)])
+  }
+
+  deleteFluxoPontual(id: number) {
+    this.router.navigate(['investimento', 'remover-fluxo-pontual', this.crypto.encrypt(id)])
+  }
+
   arrowUp(value: number) {
     return arrowUp(value)
   }

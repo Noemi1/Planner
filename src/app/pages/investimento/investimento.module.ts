@@ -18,6 +18,10 @@ import { AdicionarLinhaProdutoComponent } from './adicionar-linha-produto/adicio
 import { DeleteLinhaInvestimentoComponent } from './delete-linha-investimento/delete-linha-investimento.component';
 import { DeleteLinhaProdutoComponent } from './delete-linha-produto/delete-linha-produto.component';
 import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdicionarLinhaPrincipaisObjetivosComponent } from './adicionar-linha-principais-objetivos/adicionar-linha-principais-objetivos.component';
+import { DeleteLinhaPrincipaisObjetivosComponent } from './delete-linha-principais-objetivos/delete-linha-principais-objetivos.component';
+import { DeleteLinhaFluxosPontuaisComponent } from './delete-linha-fluxos-pontuais/delete-linha-fluxos-pontuais.component';
+import { AdicionarLinhaFluxosPontuaisComponent } from './adicionar-linha-fluxos-pontuais/adicionar-linha-fluxos-pontuais.component';
 
 
 @NgModule({
@@ -28,7 +32,11 @@ import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
     AdicionarLinhaInvestimentoComponent,
     AdicionarLinhaProdutoComponent,
     DeleteLinhaInvestimentoComponent,
-    DeleteLinhaProdutoComponent
+    DeleteLinhaProdutoComponent,
+    AdicionarLinhaPrincipaisObjetivosComponent,
+    DeleteLinhaPrincipaisObjetivosComponent,
+    DeleteLinhaFluxosPontuaisComponent,
+    AdicionarLinhaFluxosPontuaisComponent
   ],
   imports: [
     CommonModule,

@@ -1455,7 +1455,7 @@ td.td-actions {
 
 .table-editable th {
 	padding: 7px 9px;
-	border: none;
+	border: none!important;
 	background-color: var(--primary);
 	color: #fff;
 	text-shadow: 1px 2px 4px #0000004e;

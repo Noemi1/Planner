@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdicionarLinhaFluxosPontuaisComponent } from './adicionar-linha-fluxos-pontuais/adicionar-linha-fluxos-pontuais.component';
 import { AdicionarLinhaInvestimentoComponent } from './adicionar-linha-investimento/adicionar-linha-investimento.component';
+import { AdicionarLinhaPrincipaisObjetivosComponent } from './adicionar-linha-principais-objetivos/adicionar-linha-principais-objetivos.component';
 import { AdicionarLinhaProdutoComponent } from './adicionar-linha-produto/adicionar-linha-produto.component';
+import { DeleteLinhaFluxosPontuaisComponent } from './delete-linha-fluxos-pontuais/delete-linha-fluxos-pontuais.component';
 import { DeleteLinhaInvestimentoComponent } from './delete-linha-investimento/delete-linha-investimento.component';
+import { DeleteLinhaPrincipaisObjetivosComponent } from './delete-linha-principais-objetivos/delete-linha-principais-objetivos.component';
 import { DeleteLinhaProdutoComponent } from './delete-linha-produto/delete-linha-produto.component';
 import { InvestimentoComponent } from './investimento.component';
 import { RelatorioPreviewComponent } from './relatorio-preview/relatorio-preview.component';
@@ -15,6 +19,10 @@ const routes: Routes = [
       { path: 'remover-produto/:id', component: DeleteLinhaProdutoComponent },
       { path: 'adicionar-investimento', component: AdicionarLinhaInvestimentoComponent },
       { path: 'remover-investimento/:id', component: DeleteLinhaInvestimentoComponent },
+      { path: 'adicionar-objetivo', component: AdicionarLinhaPrincipaisObjetivosComponent },
+      { path: 'remover-objetivo/:id', component: DeleteLinhaPrincipaisObjetivosComponent },
+      { path: 'adicionar-fluxo-pontual', component: AdicionarLinhaFluxosPontuaisComponent },
+      { path: 'remover-fluxo-pontual/:id', component: DeleteLinhaFluxosPontuaisComponent },
     ]
   },
   {

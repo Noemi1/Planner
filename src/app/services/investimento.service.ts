@@ -10,6 +10,8 @@ import { Investimento, investimentos } from '../models/investimento.model';
 import { Produto, produtos } from '../models/produto.model';
 import { PlanejamentoProduto, PlanejamentoProdutoRequest } from '../models/planejamento-produto.model';
 import { ProdutoTributacaoRel } from '../models/produto-tributacao-rel.model';
+import { PrincipaisObjetivos } from '../models/objetivos.model';
+import { FluxosPontuais } from '../models/fluxosPontuais.model';
 
 @Injectable({
     providedIn: 'root'
@@ -23,6 +25,8 @@ export class InvestimentoService {
     list_Planejamento = new BehaviorSubject<Planejamento[]>([]);
     list_Investimento = new BehaviorSubject<Investimento[]>([]);
     list_Investimento_Tributacao_Rel = new BehaviorSubject<InvestimentoTributacaoRel[]>([]);
+    list_PrincipaisObjetivos = new BehaviorSubject<PrincipaisObjetivos[]>([]);
+    list_FluxosPontuais = new BehaviorSubject<FluxosPontuais[]>([]);
 
     constructor(
         private router: Router,
@@ -62,33 +66,26 @@ export class InvestimentoService {
             investimento: request.investimento,
             tributacao: request.tributacao,
         }
-        console.log(planejamentoInvestimento)
         this.list_Planejamento_Investimento.value.push(planejamentoInvestimento)
         this.list_Planejamento_Investimento.next(this.list_Planejamento_Investimento.value);
-        console.log(this.list_Planejamento_Investimento.value )
         var index = this.list_Investimento.value.map(x => x.id).indexOf(request.investimento.id);
         if (index != -1) {
             this.list_Investimento.value.splice(index, 1);
             this.list_Investimento.next(this.list_Investimento.value);
         }
-        console.log(this.list_Planejamento_Investimento.value )
         return;
     }
 
     deleteInvestimento(model: PlanejamentoInvestimento) {
-        console.log(model)
         var index = this.list_Planejamento_Investimento.value.findIndex(x => x.id == model.id);
         if (index != -1) {
             this.list_Planejamento_Investimento.value.splice(index, 1);
             this.list_Planejamento_Investimento.next(this.list_Planejamento_Investimento.value);
         }
         var index = this.list_Investimento.value.findIndex(x => x.id == model.investimento.id);
-        console.log(index)
         if (index == -1) {
             this.list_Investimento.value.push(model.investimento);
-            console.log(this.list_Investimento.value);
             this.list_Investimento.next(this.list_Investimento.value);
-            console.log(this.list_Investimento.value);
         }
         return this.list_Planejamento_Investimento;
     }
@@ -130,15 +127,53 @@ export class InvestimentoService {
             this.list_Planejamento_Produto.next(this.list_Planejamento_Produto.value);
         }
         var index = this.list_Produto.value.findIndex(x => x.id == model.produto.id);
-        console.log(index)
         if (index == -1) {
             this.list_Produto.value.push(model.produto);
-            console.log(this.list_Produto.value)
             this.list_Produto.next(this.list_Produto.value);
-            console.log(this.list_Produto.value)
         }
         return this.list_Planejamento_Produto;
     }
 
+    createObjetivo(objetivo: string) {
+        var id = 1;
+        if (this.list_PrincipaisObjetivos.value.length > 0) {
+            id = this.list_PrincipaisObjetivos.value[this.list_PrincipaisObjetivos.value.length-1].id + 1;
+        }
+        var obj: PrincipaisObjetivos = {
+            id: id,
+            descricao: objetivo
+        };
+        this.list_PrincipaisObjetivos.value.push(obj);
+        this.list_PrincipaisObjetivos.next(this.list_PrincipaisObjetivos.value)
+    }
+    
+    deleteObjetivo(model: PrincipaisObjetivos) {
+        var index = this.list_PrincipaisObjetivos.value.findIndex(x => x.id == model.id);
+        if (index != -1) {
+            this.list_PrincipaisObjetivos.value.splice(index, 1);
+            this.list_PrincipaisObjetivos.next(this.list_PrincipaisObjetivos.value);
+        }
+        return this.list_PrincipaisObjetivos;
+    }
+
+
+    createFluxoPontual(model: FluxosPontuais) {
+        var id = 1;
+        if (this.list_FluxosPontuais.value.length > 0) {
+            id = this.list_FluxosPontuais.value[this.list_FluxosPontuais.value.length-1].id + 1;
+        }
+        model.id = id;
+        this.list_FluxosPontuais.value.push(model);
+        this.list_FluxosPontuais.next(this.list_FluxosPontuais.value)
+    }
+    
+    deleteFluxoPontual(model: FluxosPontuais) {
+        var index = this.list_FluxosPontuais.value.findIndex(x => x.id == model.id);
+        if (index != -1) {
+            this.list_FluxosPontuais.value.splice(index, 1);
+            this.list_FluxosPontuais.next(this.list_FluxosPontuais.value);
+        }
+        return this.list_FluxosPontuais;
+    }
 
 }
